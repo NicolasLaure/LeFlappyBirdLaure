@@ -24,12 +24,18 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\managers\screenManager.cpp" />
     <ClCompile Include="src\screens\gameplay.cpp" />
+    <ClCompile Include="src\utils\math.cpp" />
+    <ClCompile Include="src\utils\screen.cpp" />
+    <ClCompile Include="src\utils\timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\constants\dimensions.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\managers\screenManager.h" />
     <ClInclude Include="src\screens\gameplay.h" />
+    <ClInclude Include="src\utils\math.h" />
+    <ClInclude Include="src\utils\screen.h" />
+    <ClInclude Include="src\utils\timer.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

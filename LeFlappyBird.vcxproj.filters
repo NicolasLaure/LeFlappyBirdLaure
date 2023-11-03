@@ -31,6 +31,12 @@
     <Filter Include="Archivos de origen\screens">
       <UniqueIdentifier>{6a05bd88-893c-4ffd-9aff-25dcc4a6d149}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de recursos\utils">
+      <UniqueIdentifier>{3dc896ab-b745-41c8-ad26-a6af35d07e5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\utils">
+      <UniqueIdentifier>{4cf43f50-20e7-4a55-86f9-d48ed77bac8e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h">
@@ -44,6 +50,15 @@
     </ClInclude>
     <ClInclude Include="src\screens\gameplay.h">
       <Filter>Archivos de origen\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\math.h">
+      <Filter>Archivos de origen\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\screen.h">
+      <Filter>Archivos de origen\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\timer.h">
+      <Filter>Archivos de origen\utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +76,15 @@
     </ClCompile>
     <ClCompile Include="src\screens\gameplay.cpp">
       <Filter>Archivos de recursos\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\math.cpp">
+      <Filter>Archivos de recursos\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\screen.cpp">
+      <Filter>Archivos de recursos\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\timer.cpp">
+      <Filter>Archivos de recursos\utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
