@@ -34,14 +34,12 @@ namespace LeFlappyBird {
 		};
 
 		void drawBird(Bird bird) {
-#ifdef _DEBUG
 			DrawRectangleRec({
 				bird.position.x,
 				bird.position.y,
 				bird.size.x,
 				bird.size.y
 			}, RED);
-#endif 
 		};
 
 		Rectangle getRectangle(Bird bird) {

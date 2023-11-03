@@ -27,14 +27,12 @@ namespace LeFlappyBird {
 		}
 
 		void drawWall(Wall wall) {
-#ifdef _DEBUG
 			DrawRectangleRec({
 				wall.position.x,
 				wall.position.y,
 				wall.size.x,
 				wall.size.y
 				}, YELLOW);
-#endif // _DEBUG
 		};
 
 		int createRandomYStartValue() {
