@@ -14,33 +14,45 @@ namespace LeFlappyBird {
 			int points = 0;
 		};
 
+		static	Vector2 BIRD_INIT_POSITION;
+
+		static Vector2 WALL_INIT_POSITION;
+
 		static GameplayEntities gameplayEntities;
 
 		static void initManagers() {
 		}
 
-		void initGameplay() {
-			const Vector2 BIRD_INIT_POSITION = {
-				ScreenUtils::getScreenWidth() / 8,
-				MathUtils::getHalf(ScreenUtils::getScreenHeight())
-			};
-
-			const Vector2 WALL_INIT_POSITION = {
-				ScreenUtils::getScreenWidth(),
-				static_cast<float>(Wall::createRandomYStartValue())
-			};
-
+		static void initEntities() {
 			gameplayEntities = {
 				Bird::createBird(BIRD_INIT_POSITION),
 				Wall::createWall(WALL_INIT_POSITION),
 				0
 			};
+		}
+
+		void initGameplay() {
+			BIRD_INIT_POSITION = {
+				ScreenUtils::getScreenWidth() / 8,
+				MathUtils::getHalf(ScreenUtils::getScreenHeight())
+			};
+
+			WALL_INIT_POSITION = {
+			ScreenUtils::getScreenWidth(),
+			static_cast<float>(Wall::createRandomYStartValue())
+			};
+
+			initEntities();
 			initManagers();
 		}
 
 		void updateGameplay() {
 			Bird::updateBird(gameplayEntities.bird);
 			Wall::updateWall(gameplayEntities.wall);
+
+			if (MathUtils::checkRectangleCollision(Bird::getRectangle(gameplayEntities.bird), Wall::getRectangle(gameplayEntities.wall))) {
+				initEntities();
+			};
 		}
 
 		void drawGameplay() {

@@ -10,7 +10,8 @@ namespace LeFlappyBird {
 		Wall createWall(Vector2 position) {
 			return {
 				position,
-				WALL_VELOCITY
+				WALL_VELOCITY,
+				WALL_SIZE
 			};
 		}
 
@@ -30,8 +31,8 @@ namespace LeFlappyBird {
 			DrawRectangleRec({
 				wall.position.x,
 				wall.position.y,
-				WALL_SIZE.x,
-				WALL_SIZE.y
+				wall.size.x,
+				wall.size.y
 				}, YELLOW);
 #endif // _DEBUG
 		};
@@ -41,6 +42,15 @@ namespace LeFlappyBird {
 				0,
 				static_cast<int>(ScreenUtils::getScreenHeight() - WALL_SIZE.y)
 			);
+		}
+
+		Rectangle getRectangle(Wall wall) {
+			return {
+				wall.position.x,
+				wall.position.y,
+				wall.size.x,
+				wall.size.y
+			};
 		}
 	}
 }

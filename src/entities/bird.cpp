@@ -8,7 +8,7 @@ namespace LeFlappyBird {
 		static const Vector2 BIRD_SIZE = { 50.0f, 50.0f };
 
 		static void checkBirdScreenCollisions(Bird& bird) {
-			ScreenUtils::Entity birdEntity = { bird.position, { 0.0f, bird.velocity }, BIRD_SIZE };
+			ScreenUtils::Entity birdEntity = { bird.position, { 0.0f, bird.velocity }, bird.size };
 			ScreenUtils::checkPositionByScreenBounds(birdEntity);
 
 			bird.position = birdEntity.position;
@@ -17,7 +17,8 @@ namespace LeFlappyBird {
 		Bird createBird(Vector2 position) {
 			return {
 				position,
-				BIRD_VELOCITY
+				BIRD_VELOCITY,
+				BIRD_SIZE
 			};
 		};
 
@@ -37,10 +38,19 @@ namespace LeFlappyBird {
 			DrawRectangleRec({
 				bird.position.x,
 				bird.position.y,
-				BIRD_SIZE.x,
-				BIRD_SIZE.y
+				bird.size.x,
+				bird.size.y
 			}, RED);
 #endif 
 		};
+
+		Rectangle getRectangle(Bird bird) {
+			return {
+				bird.position.x,
+				bird.position.y,
+				bird.size.x,
+				bird.size.y
+			};
+		}
 	}
 }
