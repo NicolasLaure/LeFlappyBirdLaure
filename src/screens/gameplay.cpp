@@ -3,6 +3,7 @@
 #include "entities/bird.h"
 #include "entities/wall.h"
 #include "managers/screenManager.h"
+#include "managers/uiManager.h"
 #include "utils/screen.h"
 #include "utils/math.h"
 
@@ -29,6 +30,8 @@ namespace LeFlappyBird {
 				Wall::createWall(WALL_INIT_POSITION),
 				0
 			};
+
+			UiManager::init();
 		}
 
 		static void restartEntities() {
@@ -64,11 +67,14 @@ namespace LeFlappyBird {
 			if (MathUtils::checkRectangleCollision(Bird::getRectangle(gameplayEntities.bird), Wall::getRectangle(gameplayEntities.wall))) {
 				restartEntities();
 			};
+
+			UiManager::update();
 		}
 
 		void drawGameplay() {
 			Bird::drawBird(gameplayEntities.bird);
 			Wall::drawWall(gameplayEntities.wall);
+			UiManager::draw();
 		}
 	}
 }

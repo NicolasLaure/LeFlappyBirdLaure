@@ -72,6 +72,9 @@
     <ClInclude Include="src\entities\wall.h">
       <Filter>Archivos de origen\entities</Filter>
     </ClInclude>
+    <ClInclude Include="src\managers\uiManager.h">
+      <Filter>Archivos de origen\managers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -103,6 +106,9 @@
     </ClCompile>
     <ClCompile Include="src\entities\wall.cpp">
       <Filter>Archivos de recursos\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\managers\uiManager.cpp">
+      <Filter>Archivos de recursos\managers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
