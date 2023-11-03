@@ -31,6 +31,17 @@ namespace LeFlappyBird {
 			};
 		}
 
+		static void restartEntities() {
+			gameplayEntities = {
+				Bird::createBird(BIRD_INIT_POSITION),
+				Wall::createWall({
+						WALL_INIT_POSITION.x,
+						static_cast<float>(Wall::createRandomYStartValue())
+					}),
+				0
+			};
+		}
+
 		void initGameplay() {
 			BIRD_INIT_POSITION = {
 				ScreenUtils::getScreenWidth() / 8,
@@ -51,7 +62,7 @@ namespace LeFlappyBird {
 			Wall::updateWall(gameplayEntities.wall);
 
 			if (MathUtils::checkRectangleCollision(Bird::getRectangle(gameplayEntities.bird), Wall::getRectangle(gameplayEntities.wall))) {
-				initEntities();
+				restartEntities();
 			};
 		}
 
