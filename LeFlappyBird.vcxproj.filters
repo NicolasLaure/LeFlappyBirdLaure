@@ -69,6 +69,9 @@
     <ClInclude Include="src\entities\bird.h">
       <Filter>Archivos de origen\entities</Filter>
     </ClInclude>
+    <ClInclude Include="src\entities\wall.h">
+      <Filter>Archivos de origen\entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -96,6 +99,9 @@
       <Filter>Archivos de recursos\utils</Filter>
     </ClCompile>
     <ClCompile Include="src\entities\bird.cpp">
+      <Filter>Archivos de recursos\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\wall.cpp">
       <Filter>Archivos de recursos\entities</Filter>
     </ClCompile>
   </ItemGroup>
