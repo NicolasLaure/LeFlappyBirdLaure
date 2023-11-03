@@ -13,10 +13,54 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de recursos\constants">
+      <UniqueIdentifier>{f0f2d41c-969d-4b3f-8ee7-b3054a38e05a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\constants">
+      <UniqueIdentifier>{aea3c369-88eb-4baf-b78c-0749fa5998cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\managers">
+      <UniqueIdentifier>{c8c99cb4-8b48-4c7f-8401-281bf888828b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\managers">
+      <UniqueIdentifier>{34e6ae44-49a6-4acd-9243-81d11ee3d4ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\screens">
+      <UniqueIdentifier>{91ecbbc3-971f-41aa-b797-e81792846e6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\screens">
+      <UniqueIdentifier>{6a05bd88-893c-4ffd-9aff-25dcc4a6d149}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClInclude Include="src\game.h">
       <Filter>Archivos de origen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\constants\dimensions.h">
+      <Filter>Archivos de origen\constants</Filter>
+    </ClInclude>
+    <ClInclude Include="src\managers\screenManager.h">
+      <Filter>Archivos de origen\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\screens\gameplay.h">
+      <Filter>Archivos de origen\screens</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
+    <ClCompile Include="src\constants\dimensions.cpp">
+      <Filter>Archivos de recursos\constants</Filter>
+    </ClCompile>
+    <ClCompile Include="src\managers\screenManager.cpp">
+      <Filter>Archivos de recursos\managers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\screens\gameplay.cpp">
+      <Filter>Archivos de recursos\screens</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
