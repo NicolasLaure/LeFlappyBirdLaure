@@ -6,6 +6,7 @@ namespace LeFlappyBird {
 		struct Entity {
 			Vector2 position;
 			Vector2 velocity;
+			Vector2 size;
 		};
 
 		float getScreenWidth();

@@ -26,17 +26,17 @@ namespace LeFlappyBird {
 		void checkPositionByScreenBounds(Entity& entity) {
 			Vector2 nextFramePosition = { entity.position.x + entity.velocity.x * GetFrameTime(), entity.position.y + entity.velocity.y * GetFrameTime() };
 			
-			if (nextFramePosition.x > getScreenWidth()) {
-				entity.position.x = 0;
+			if (nextFramePosition.x + entity.size.x > getScreenWidth()) {
+				entity.position.x = getScreenWidth() - entity.size.x;
 			}
 			else if (nextFramePosition.x < 0) {
-				entity.position.x = getScreenWidth();
+				entity.position.x = 0;
 			}
-			else if (nextFramePosition.y > getScreenHeight()) {
-				entity.position.y = 0;
+			else if (nextFramePosition.y + entity.size.y > getScreenHeight()) {
+				entity.position.y = getScreenHeight() - entity.size.y;
 			}
 			else if (nextFramePosition.y < 0) {
-				entity.position.y = getScreenHeight();
+				entity.position.y = 0;
 			}
 		}
 	}

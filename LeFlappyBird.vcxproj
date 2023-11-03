@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\constants\dimensions.cpp" />
+    <ClCompile Include="src\entities\bird.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\managers\screenManager.cpp" />
@@ -30,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\constants\dimensions.h" />
+    <ClInclude Include="src\entities\bird.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\managers\screenManager.h" />
     <ClInclude Include="src\screens\gameplay.h" />

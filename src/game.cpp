@@ -16,6 +16,8 @@ namespace LeFlappyBird {
         static void init() {
             InitWindow(static_cast<int>(Dimensions::SCREEN_DIMENSIONS.x), static_cast<int>(Dimensions::SCREEN_DIMENSIONS.y), "Ashhteroids");
 
+            ScreensManager::initManager();
+
             InitAudioDevice();
         }
 

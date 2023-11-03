@@ -37,6 +37,12 @@
     <Filter Include="Archivos de origen\utils">
       <UniqueIdentifier>{4cf43f50-20e7-4a55-86f9-d48ed77bac8e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de recursos\entities">
+      <UniqueIdentifier>{98cf7874-394b-4c2f-b907-68f3956cdc63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\entities">
+      <UniqueIdentifier>{7bfd73e0-c5b7-402f-b2d3-cf135e115eaf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h">
@@ -59,6 +65,9 @@
     </ClInclude>
     <ClInclude Include="src\utils\timer.h">
       <Filter>Archivos de origen\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entities\bird.h">
+      <Filter>Archivos de origen\entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="src\utils\timer.cpp">
       <Filter>Archivos de recursos\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="src\entities\bird.cpp">
+      <Filter>Archivos de recursos\entities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
