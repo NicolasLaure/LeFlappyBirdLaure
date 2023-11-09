@@ -1,14 +1,16 @@
 #include "bird.h"
 
 #include "utils/screen.h"
+#include "raymath.h"
 
 namespace LeFlappyBird {
 	namespace Bird {
-		static const float BIRD_VELOCITY = 500.0f;
+		static const float BIRD_VELOCITY_UP = -500.0f;
+		static const float BIRD_ACCELERATION = 1000.0f;
 		static const Vector2 BIRD_SIZE = { 50.0f, 50.0f };
 
 		static void checkBirdScreenCollisions(Bird& bird) {
-			ScreenUtils::Entity birdEntity = { bird.position, { 0.0f, bird.velocity }, bird.size };
+			ScreenUtils::Entity birdEntity = { bird.position, { 0.0f, bird.velocity.y }, bird.size };
 			ScreenUtils::checkPositionByScreenBounds(birdEntity);
 
 			bird.position = birdEntity.position;
@@ -17,18 +19,19 @@ namespace LeFlappyBird {
 		Bird createBird(Vector2 position) {
 			return {
 				position,
-				BIRD_VELOCITY,
+				{ 0, 0 },
 				BIRD_SIZE
 			};
 		};
 
 		void updateBird(Bird& bird) {
-			if (IsKeyDown(bird.goUpbutton)) {
-				bird.position.y -= bird.velocity * GetFrameTime();
+			if (IsKeyPressed(bird.goUpbutton)) {
+				bird.velocity.y = BIRD_VELOCITY_UP;
 			}
-			else if (IsKeyDown(bird.goDownButton)) {
-				bird.position.y += bird.velocity * GetFrameTime();
-			}
+
+			bird.velocity.y += BIRD_ACCELERATION * GetFrameTime();
+
+			bird.position.y += bird.velocity.y * GetFrameTime();
 
 			checkBirdScreenCollisions(bird);
 		};
