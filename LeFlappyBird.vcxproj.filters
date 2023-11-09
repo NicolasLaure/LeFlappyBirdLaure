@@ -43,6 +43,12 @@
     <Filter Include="Archivos de origen\entities">
       <UniqueIdentifier>{7bfd73e0-c5b7-402f-b2d3-cf135e115eaf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de recursos\assets">
+      <UniqueIdentifier>{bf855411-e8a5-49e9-ae7c-ca26ff6e7a77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\assets">
+      <UniqueIdentifier>{d2ae1048-c5a6-43a6-8fc4-a18afda698e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\game.h">
@@ -73,6 +79,12 @@
       <Filter>Archivos de origen\entities</Filter>
     </ClInclude>
     <ClInclude Include="src\managers\uiManager.h">
+      <Filter>Archivos de origen\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\assets\assetManager.h">
+      <Filter>Archivos de origen\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="src\managers\backgroundManager.h">
       <Filter>Archivos de origen\managers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -108,6 +120,12 @@
       <Filter>Archivos de recursos\entities</Filter>
     </ClCompile>
     <ClCompile Include="src\managers\uiManager.cpp">
+      <Filter>Archivos de recursos\managers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\assets\assetManager.cpp">
+      <Filter>Archivos de recursos\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="src\managers\backgroundManager.cpp">
       <Filter>Archivos de recursos\managers</Filter>
     </ClCompile>
   </ItemGroup>

@@ -19,12 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\assets\assetManager.cpp" />
     <ClCompile Include="src\constants\dimensions.cpp" />
     <ClCompile Include="src\entities\bird.cpp" />
     <ClCompile Include="src\entities\wall.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\managers\screenManager.cpp" />
+    <ClCompile Include="src\managers\backgroundManager.cpp" />
     <ClCompile Include="src\managers\uiManager.cpp" />
     <ClCompile Include="src\screens\gameplay.cpp" />
     <ClCompile Include="src\utils\math.cpp" />
@@ -32,10 +34,12 @@
     <ClCompile Include="src\utils\timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\assets\assetManager.h" />
     <ClInclude Include="src\constants\dimensions.h" />
     <ClInclude Include="src\entities\bird.h" />
     <ClInclude Include="src\entities\wall.h" />
     <ClInclude Include="src\game.h" />
+    <ClInclude Include="src\managers\backgroundManager.h" />
     <ClInclude Include="src\managers\screenManager.h" />
     <ClInclude Include="src\managers\uiManager.h" />
     <ClInclude Include="src\screens\gameplay.h" />

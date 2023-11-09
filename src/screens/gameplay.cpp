@@ -4,6 +4,7 @@
 #include "entities/wall.h"
 #include "managers/screenManager.h"
 #include "managers/uiManager.h"
+#include "managers/backgroundManager.h"
 #include "utils/screen.h"
 #include "utils/math.h"
 
@@ -22,6 +23,8 @@ namespace LeFlappyBird {
 		static GameplayEntities gameplayEntities;
 
 		static void initManagers() {
+			BackgroundManager::initBackground();
+			UiManager::init();
 		}
 
 		static void initEntities() {
@@ -30,8 +33,6 @@ namespace LeFlappyBird {
 				Wall::createWall(WALL_INIT_POSITION),
 				0
 			};
-
-			UiManager::init();
 		}
 
 		static void restartEntities() {
@@ -68,10 +69,12 @@ namespace LeFlappyBird {
 				restartEntities();
 			};
 
+			BackgroundManager::updateBackground();
 			UiManager::update();
 		}
 
 		void drawGameplay() {
+			BackgroundManager::drawBackground();
 			Bird::drawBird(gameplayEntities.bird);
 			Wall::drawWall(gameplayEntities.wall);
 			UiManager::draw();

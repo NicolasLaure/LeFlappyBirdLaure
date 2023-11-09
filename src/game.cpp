@@ -3,6 +3,7 @@
 #include "raylib.h"
 
 #include "managers/screenManager.h"
+#include "assets/assetManager.h"
 #include "constants/dimensions.h"
 
 namespace LeFlappyBird {
@@ -16,6 +17,7 @@ namespace LeFlappyBird {
         static void init() {
             InitWindow(static_cast<int>(Dimensions::SCREEN_DIMENSIONS.x), static_cast<int>(Dimensions::SCREEN_DIMENSIONS.y), "LeFlappyBird");
 
+            AssetManager::init();
             ScreensManager::initManager();
 
             InitAudioDevice();
