@@ -13,11 +13,15 @@ namespace LeFlappyBird {
 			AssetWithTexture background = { Assets::PARALLAX_BACKGROUND, LoadTexture("res/images/parallax-mountain-bg.png") };
 			AssetWithTexture backgroundTrees = { Assets::PARALLAX_BACKGROUND_TREES, LoadTexture("res/images/parallax-mountain-trees.png") };
 			AssetWithTexture backgroundMountains = { Assets::PARALLAX_BACKGROUND_MOUNTAINS, LoadTexture("res/images/parallax-mountain-mountains.png") };
+			AssetWithTexture cheesecake = { Assets::CHEESECAKE, LoadTexture("res/images/cheesecake.png") };
+			AssetWithTexture flyingCheesecake = { Assets::CHEESECAKE_FLYING, LoadTexture("res/images/cheesecake-flying.png") };
 
 			AssetWithTexture auxTextures[ASSETS_COUNT] = {
 				background,
 				backgroundTrees,
-				backgroundMountains
+				backgroundMountains,
+				cheesecake,
+				flyingCheesecake
 			};
 
 			for (int i = 0; i < ASSETS_COUNT; i++) {
