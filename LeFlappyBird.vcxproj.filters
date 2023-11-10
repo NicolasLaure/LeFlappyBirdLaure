@@ -13,120 +13,120 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Archivos de recursos\constants">
-      <UniqueIdentifier>{f0f2d41c-969d-4b3f-8ee7-b3054a38e05a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\constants">
-      <UniqueIdentifier>{aea3c369-88eb-4baf-b78c-0749fa5998cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de recursos\managers">
-      <UniqueIdentifier>{c8c99cb4-8b48-4c7f-8401-281bf888828b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\managers">
-      <UniqueIdentifier>{34e6ae44-49a6-4acd-9243-81d11ee3d4ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de recursos\screens">
-      <UniqueIdentifier>{91ecbbc3-971f-41aa-b797-e81792846e6c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\screens">
-      <UniqueIdentifier>{6a05bd88-893c-4ffd-9aff-25dcc4a6d149}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de recursos\utils">
-      <UniqueIdentifier>{3dc896ab-b745-41c8-ad26-a6af35d07e5a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\utils">
-      <UniqueIdentifier>{4cf43f50-20e7-4a55-86f9-d48ed77bac8e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de recursos\entities">
-      <UniqueIdentifier>{98cf7874-394b-4c2f-b907-68f3956cdc63}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\entities">
-      <UniqueIdentifier>{7bfd73e0-c5b7-402f-b2d3-cf135e115eaf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de recursos\assets">
-      <UniqueIdentifier>{bf855411-e8a5-49e9-ae7c-ca26ff6e7a77}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\assets">
+    <Filter Include="Archivos de encabezado\assets">
       <UniqueIdentifier>{d2ae1048-c5a6-43a6-8fc4-a18afda698e9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\constants">
+      <UniqueIdentifier>{aea3c369-88eb-4baf-b78c-0749fa5998cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\entities">
+      <UniqueIdentifier>{7bfd73e0-c5b7-402f-b2d3-cf135e115eaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\managers">
+      <UniqueIdentifier>{34e6ae44-49a6-4acd-9243-81d11ee3d4ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\screens">
+      <UniqueIdentifier>{6a05bd88-893c-4ffd-9aff-25dcc4a6d149}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\utils">
+      <UniqueIdentifier>{4cf43f50-20e7-4a55-86f9-d48ed77bac8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\assets">
+      <UniqueIdentifier>{bf855411-e8a5-49e9-ae7c-ca26ff6e7a77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\constants">
+      <UniqueIdentifier>{f0f2d41c-969d-4b3f-8ee7-b3054a38e05a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\entities">
+      <UniqueIdentifier>{98cf7874-394b-4c2f-b907-68f3956cdc63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\managers">
+      <UniqueIdentifier>{c8c99cb4-8b48-4c7f-8401-281bf888828b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\screens">
+      <UniqueIdentifier>{91ecbbc3-971f-41aa-b797-e81792846e6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\utils">
+      <UniqueIdentifier>{3dc896ab-b745-41c8-ad26-a6af35d07e5a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\game.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
     <ClInclude Include="src\constants\dimensions.h">
-      <Filter>Archivos de origen\constants</Filter>
+      <Filter>Archivos de encabezado\constants</Filter>
     </ClInclude>
     <ClInclude Include="src\managers\screenManager.h">
-      <Filter>Archivos de origen\managers</Filter>
+      <Filter>Archivos de encabezado\managers</Filter>
     </ClInclude>
     <ClInclude Include="src\screens\gameplay.h">
-      <Filter>Archivos de origen\screens</Filter>
+      <Filter>Archivos de encabezado\screens</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\math.h">
-      <Filter>Archivos de origen\utils</Filter>
+      <Filter>Archivos de encabezado\utils</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\screen.h">
-      <Filter>Archivos de origen\utils</Filter>
+      <Filter>Archivos de encabezado\utils</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\timer.h">
-      <Filter>Archivos de origen\utils</Filter>
+      <Filter>Archivos de encabezado\utils</Filter>
     </ClInclude>
     <ClInclude Include="src\entities\bird.h">
-      <Filter>Archivos de origen\entities</Filter>
+      <Filter>Archivos de encabezado\entities</Filter>
     </ClInclude>
     <ClInclude Include="src\entities\wall.h">
-      <Filter>Archivos de origen\entities</Filter>
+      <Filter>Archivos de encabezado\entities</Filter>
     </ClInclude>
     <ClInclude Include="src\managers\uiManager.h">
-      <Filter>Archivos de origen\managers</Filter>
+      <Filter>Archivos de encabezado\managers</Filter>
     </ClInclude>
     <ClInclude Include="src\assets\assetManager.h">
-      <Filter>Archivos de origen\assets</Filter>
+      <Filter>Archivos de encabezado\assets</Filter>
     </ClInclude>
     <ClInclude Include="src\managers\backgroundManager.h">
-      <Filter>Archivos de origen\managers</Filter>
+      <Filter>Archivos de encabezado\managers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Archivos de recursos</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game.cpp">
-      <Filter>Archivos de recursos</Filter>
-    </ClCompile>
     <ClCompile Include="src\constants\dimensions.cpp">
-      <Filter>Archivos de recursos\constants</Filter>
+      <Filter>Archivos de origen\constants</Filter>
     </ClCompile>
     <ClCompile Include="src\managers\screenManager.cpp">
-      <Filter>Archivos de recursos\managers</Filter>
+      <Filter>Archivos de origen\managers</Filter>
     </ClCompile>
     <ClCompile Include="src\screens\gameplay.cpp">
-      <Filter>Archivos de recursos\screens</Filter>
+      <Filter>Archivos de origen\screens</Filter>
     </ClCompile>
     <ClCompile Include="src\utils\math.cpp">
-      <Filter>Archivos de recursos\utils</Filter>
+      <Filter>Archivos de origen\utils</Filter>
     </ClCompile>
     <ClCompile Include="src\utils\screen.cpp">
-      <Filter>Archivos de recursos\utils</Filter>
+      <Filter>Archivos de origen\utils</Filter>
     </ClCompile>
     <ClCompile Include="src\utils\timer.cpp">
-      <Filter>Archivos de recursos\utils</Filter>
+      <Filter>Archivos de origen\utils</Filter>
     </ClCompile>
     <ClCompile Include="src\entities\bird.cpp">
-      <Filter>Archivos de recursos\entities</Filter>
+      <Filter>Archivos de origen\entities</Filter>
     </ClCompile>
     <ClCompile Include="src\entities\wall.cpp">
-      <Filter>Archivos de recursos\entities</Filter>
+      <Filter>Archivos de origen\entities</Filter>
     </ClCompile>
     <ClCompile Include="src\managers\uiManager.cpp">
-      <Filter>Archivos de recursos\managers</Filter>
+      <Filter>Archivos de origen\managers</Filter>
     </ClCompile>
     <ClCompile Include="src\assets\assetManager.cpp">
-      <Filter>Archivos de recursos\assets</Filter>
+      <Filter>Archivos de origen\assets</Filter>
     </ClCompile>
     <ClCompile Include="src\managers\backgroundManager.cpp">
-      <Filter>Archivos de recursos\managers</Filter>
+      <Filter>Archivos de origen\managers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -11,7 +11,7 @@ namespace LeFlappyBird {
 			Texture2D backgroundTexture;
 			float parallaxVelocity;
 			float scroll;
-			float yPosition;
+			float scale;
 		};
 
 		struct Background {
@@ -25,7 +25,7 @@ namespace LeFlappyBird {
 		static void updateBackgroundAsset(BackgroundAsset &backgroundAsset) {
 			backgroundAsset.scroll += backgroundAsset.parallaxVelocity * GetFrameTime();
 
-			if (backgroundAsset.scroll >= backgroundAsset.backgroundTexture.width * 8.0f) {
+			if (backgroundAsset.scroll >= backgroundAsset.backgroundTexture.width * 2.0f) {
 				backgroundAsset.scroll = 0.0f;
 			}
 		}
@@ -33,19 +33,19 @@ namespace LeFlappyBird {
 		static void drawBackgroundAsset(BackgroundAsset backgroundAsset) {
 			Rectangle source = {
 				backgroundAsset.scroll,
-				backgroundAsset.yPosition,
-				static_cast<float>(backgroundAsset.backgroundTexture.width * 2),
+				0.0f,
+				static_cast<float>(backgroundAsset.backgroundTexture.width * backgroundAsset.scale),
 				static_cast<float>(backgroundAsset.backgroundTexture.height)
 			};
 
 			Rectangle dest = {
 				0,
 				0,
-				ScreenUtils::getScreenWidth() * 2,
-				ScreenUtils::getScreenHeight() + 100.0f
+				ScreenUtils::getScreenWidth() * backgroundAsset.scale,
+				ScreenUtils::getScreenHeight()
 			};
 
-			Vector2 origin = { backgroundAsset.backgroundTexture.width / 2.0f, backgroundAsset.backgroundTexture.height / 2.0f };
+			Vector2 origin = { 0.0f, 0.0f };
 
 			DrawTexturePro(
 				backgroundAsset.backgroundTexture,
@@ -58,24 +58,28 @@ namespace LeFlappyBird {
 		}
 
 		void initBackground() {
+			const float MOUNTAINS_SCROLL_VELOCITY = 10.0f;
+			const float TREES_SCROLL_VELOCITY = 20.0f;
+			const float SCROLLED_TEXTURES_SCALE = 2.0f;
+
 			background = {
 				{
 					AssetManager::getTexture(AssetManager::PARALLAX_BACKGROUND),
 					0.0f,
 					0.0f,
-					0.0f
+					1.0f,
 				},
 				{
 					AssetManager::getTexture(AssetManager::PARALLAX_BACKGROUND_MOUNTAINS),
-					10.0f,
+					MOUNTAINS_SCROLL_VELOCITY,
 					0.0f,
-					0.0f
+					SCROLLED_TEXTURES_SCALE
 				},
 				{
 					AssetManager::getTexture(AssetManager::PARALLAX_BACKGROUND_TREES),
-					20.0f,
+					TREES_SCROLL_VELOCITY,
 					0.0f,
-					0.0f
+					SCROLLED_TEXTURES_SCALE
 				},
 			};
 		};
