@@ -14,5 +14,6 @@ namespace LeFlappyBird {
 		void updateBird(Bird& bird);
 		void drawBird(Bird bird);
 		Rectangle getRectangle(Bird bird);
+		bool isCollidingBottom(Bird bird);
 	}
 }

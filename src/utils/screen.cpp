@@ -5,6 +5,23 @@ namespace LeFlappyBird {
 		static float screenWidth = 0;
 		static float screenHeight = 0;
 
+		static void checkPositionBounds(Entity& entity, Vector2 xBoundsValues, Vector2 yBoundsValues) {
+			Vector2 nextFramePosition = { entity.position.x + entity.velocity.x * GetFrameTime(), entity.position.y + entity.velocity.y * GetFrameTime() };
+
+			if (nextFramePosition.x > xBoundsValues.y) {
+				entity.position.x = xBoundsValues.y;
+			}
+			else if (nextFramePosition.x < xBoundsValues.x) {
+				entity.position.x = xBoundsValues.x;
+			}
+			else if (nextFramePosition.y > yBoundsValues.y) {
+				entity.position.y = yBoundsValues.y;
+			}
+			else if (nextFramePosition.y < yBoundsValues.x) {
+				entity.position.y = yBoundsValues.x;
+			}
+		}
+
 		float getScreenWidth() {
 			if (screenWidth == 0) {
 				screenWidth = static_cast<float>(GetScreenWidth());
@@ -24,19 +41,28 @@ namespace LeFlappyBird {
 		}
 
 		void checkPositionByScreenBounds(Entity& entity) {
-			Vector2 nextFramePosition = { entity.position.x + entity.velocity.x * GetFrameTime(), entity.position.y + entity.velocity.y * GetFrameTime() };
-			
-			if (nextFramePosition.x + entity.size.x > getScreenWidth()) {
-				entity.position.x = getScreenWidth() - entity.size.x;
-			}
-			else if (nextFramePosition.x < 0) {
-				entity.position.x = 0;
-			}
-			else if (nextFramePosition.y + entity.size.y > getScreenHeight()) {
-				entity.position.y = getScreenHeight() - entity.size.y;
-			}
-			else if (nextFramePosition.y < 0) {
-				entity.position.y = 0;
+			checkPositionBounds(entity, {
+					0,
+					getScreenWidth() - entity.size.x
+				},
+				{
+					0,
+					getScreenHeight() - entity.size.y
+				});
+		}
+
+		void checkPositionByScreenBounds(Entity& entity, Vector2 xBoundsValues, Vector2 yBoundsValues) {
+			checkPositionBounds(entity, xBoundsValues, yBoundsValues);
+		}
+
+		bool isCollidingInScreenPart(Entity entity, ScreenPart screenPart) {
+			switch (screenPart) {
+				case TOP:
+					return entity.position.y <= 0;
+				case BOTTOM:
+					return entity.position.y + entity.size.y >= getScreenHeight();
+				default:
+					return false;
 			}
 		}
 	}

@@ -10,8 +10,14 @@ namespace LeFlappyBird {
 		static const Vector2 BIRD_SIZE = { 50.0f, 50.0f };
 
 		static void checkBirdScreenCollisions(Bird& bird) {
-			ScreenUtils::Entity birdEntity = { bird.position, { 0.0f, bird.velocity.y }, bird.size };
-			ScreenUtils::checkPositionByScreenBounds(birdEntity);
+			ScreenUtils::Entity birdEntity = { bird.position, bird.velocity, bird.size };
+			ScreenUtils::checkPositionByScreenBounds(birdEntity, {
+					0,
+					ScreenUtils::getScreenWidth() - birdEntity.size.x
+				}, {
+					-birdEntity.size.y,
+					ScreenUtils::getScreenHeight() - birdEntity.size.y
+				});
 
 			bird.position = birdEntity.position;
 		}
@@ -52,6 +58,12 @@ namespace LeFlappyBird {
 				bird.size.x,
 				bird.size.y
 			};
+		}
+
+		bool isCollidingBottom(Bird bird) {
+			ScreenUtils::Entity birdEntity = { bird.position, bird.velocity, bird.size };
+
+			return ScreenUtils::isCollidingInScreenPart(birdEntity, ScreenUtils::BOTTOM);
 		}
 	}
 }
