@@ -155,7 +155,7 @@
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /s/y "$(SolutionDir)res\" "$(OutDir)res\"</Command>
+      <Command>"$(SolutionDir)scripts/assets.bat" "$(SolutionDir)res\" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
