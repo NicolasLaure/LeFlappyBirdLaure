@@ -1,6 +1,7 @@
 #include "bird.h"
 
 #include "utils/screen.h"
+#include "utils/math.h"
 #include "raymath.h"
 
 namespace LeFlappyBird {
@@ -9,6 +10,10 @@ namespace LeFlappyBird {
 		static const float BIRD_ACCELERATION = 1000.0f;
 		static const Vector2 BIRD_SIZE = { 50.0f, 50.0f };
 
+		static bool isBirdInNonFlySpace(Bird bird) {
+			return bird.position.y + MathUtils::getHalf(bird.size.y) < 0;
+		}
+
 		static void checkBirdScreenCollisions(Bird& bird) {
 			ScreenUtils::Entity birdEntity = { bird.position, bird.velocity, bird.size };
 			ScreenUtils::checkPositionByScreenBounds(birdEntity, {
@@ -16,7 +21,7 @@ namespace LeFlappyBird {
 					ScreenUtils::getScreenWidth() - birdEntity.size.x
 				}, {
 					-birdEntity.size.y,
-					ScreenUtils::getScreenHeight() - birdEntity.size.y
+					ScreenUtils::getScreenHeight()
 				});
 
 			bird.position = birdEntity.position;
@@ -31,7 +36,7 @@ namespace LeFlappyBird {
 		};
 
 		void updateBird(Bird& bird) {
-			if (IsKeyPressed(bird.goUpbutton)) {
+			if (IsKeyPressed(bird.goUpbutton) && !isBirdInNonFlySpace(bird)) {
 				bird.velocity.y = BIRD_VELOCITY_UP;
 			}
 
@@ -61,7 +66,7 @@ namespace LeFlappyBird {
 		}
 
 		bool isCollidingBottom(Bird bird) {
-			ScreenUtils::Entity birdEntity = { bird.position, bird.velocity, bird.size };
+			ScreenUtils::Entity birdEntity = { bird.position, bird.velocity, { 0.0f, 0.0f } };
 
 			return ScreenUtils::isCollidingInScreenPart(birdEntity, ScreenUtils::BOTTOM);
 		}
