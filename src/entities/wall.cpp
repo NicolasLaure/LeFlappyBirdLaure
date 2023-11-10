@@ -1,24 +1,43 @@
 #include "wall.h"
 
 #include "utils/screen.h"
+#include "utils/math.h"
 
 namespace LeFlappyBird {
 	namespace Wall {
 		static const float WALL_VELOCITY = 200.0f;
-		static const Vector2 WALL_SIZE = { 50.0f, 200.0f };
+		static const Vector2 SPACE_SIZE = { 50.0f, 200.0f };
+
+		static Rectangle getTopRectangle(Wall wall) {
+			return {
+				wall.position.x,
+				0,
+				wall.size.x,
+				wall.position.y
+			};
+		}
+
+		static Rectangle getBottomRectangle(Wall wall) {
+			return {
+				wall.position.x,
+				wall.position.y + wall.size.y,
+				wall.size.x,
+				ScreenUtils::getScreenHeight()
+			};
+		}
 
 		Wall createWall(Vector2 position) {
 			return {
 				position,
 				WALL_VELOCITY,
-				WALL_SIZE
+				SPACE_SIZE
 			};
 		}
 
 		void updateWall(Wall& wall) {
 			wall.position.x -= WALL_VELOCITY * GetFrameTime();
 
-			if (wall.position.x < -WALL_SIZE.x) {
+			if (wall.position.x < -SPACE_SIZE.x) {
 				wall.position = {
 					ScreenUtils::getScreenWidth(),
 					static_cast<float>(createRandomYStartValue())
@@ -27,28 +46,27 @@ namespace LeFlappyBird {
 		}
 
 		void drawWall(Wall wall) {
-			DrawRectangleRec({
-				wall.position.x,
-				wall.position.y,
-				wall.size.x,
-				wall.size.y
-				}, YELLOW);
+			DrawRectangleRec(getTopRectangle(wall), YELLOW);
+
+			DrawRectangleRec(getBottomRectangle(wall), YELLOW);
 		};
 
 		int createRandomYStartValue() {
+			const int SPACE_MARGIN = 10;
 			return GetRandomValue(
-				0,
-				static_cast<int>(ScreenUtils::getScreenHeight() - WALL_SIZE.y)
+				SPACE_MARGIN,
+				static_cast<int>(ScreenUtils::getScreenHeight() - SPACE_SIZE.y - SPACE_MARGIN)
 			);
 		}
 
-		Rectangle getRectangle(Wall wall) {
-			return {
-				wall.position.x,
-				wall.position.y,
-				wall.size.x,
-				wall.size.y
-			};
+		bool collidesWith(Wall wall, Bird::Bird bird) {
+			return MathUtils::checkRectangleCollision(
+				Bird::getRectangle(bird),
+				getTopRectangle(wall)
+			) || MathUtils::checkRectangleCollision(
+				Bird::getRectangle(bird),
+				getBottomRectangle(wall)
+			);
 		}
 	}
 }

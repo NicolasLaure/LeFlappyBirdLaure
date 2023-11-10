@@ -65,7 +65,7 @@ namespace LeFlappyBird {
 			Bird::updateBird(gameplayEntities.bird);
 			Wall::updateWall(gameplayEntities.wall);
 
-			if (Bird::isCollidingBottom(gameplayEntities.bird) || MathUtils::checkRectangleCollision(Bird::getRectangle(gameplayEntities.bird), Wall::getRectangle(gameplayEntities.wall))) {
+			if (Bird::isCollidingBottom(gameplayEntities.bird) || Wall::collidesWith(gameplayEntities.wall, gameplayEntities.bird)) {
 				restartEntities();
 			};
 

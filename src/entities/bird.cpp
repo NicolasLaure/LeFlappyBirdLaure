@@ -10,7 +10,7 @@
 
 namespace LeFlappyBird {
 	namespace Bird {
-		static const float BIRD_VELOCITY_UP = -500.0f;
+		static const float BIRD_VELOCITY_UP = -400.0f;
 		static const float BIRD_ACCELERATION = 1000.0f;
 		static const Vector2 BIRD_SIZE = { 64.0f, 64.0f };
 		

@@ -1,6 +1,8 @@
 #pragma once
 #include "raylib.h"
 
+#include "entities/bird.h"
+
 namespace LeFlappyBird {
 	namespace Wall {
 		struct Wall {
@@ -13,6 +15,6 @@ namespace LeFlappyBird {
 		void updateWall(Wall& wall);
 		void drawWall(Wall wall);
 		int createRandomYStartValue();
-		Rectangle getRectangle(Wall wall);
+		bool collidesWith(Wall wall, Bird::Bird bird);
 	}
 }
