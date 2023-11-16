@@ -49,6 +49,12 @@
     <Filter Include="Archivos de origen\utils">
       <UniqueIdentifier>{3dc896ab-b745-41c8-ad26-a6af35d07e5a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\uiComponents">
+      <UniqueIdentifier>{5fb3c055-02ff-4f0f-81cb-23f2fa324230}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\uiComponents">
+      <UniqueIdentifier>{8cfc7b60-e90e-408b-ae35-c7a8d9c5681e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\constants\dimensions.h">
@@ -86,6 +92,18 @@
     </ClInclude>
     <ClInclude Include="src\game.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\screens\menu.h">
+      <Filter>Archivos de encabezado\screens</Filter>
+    </ClInclude>
+    <ClInclude Include="src\uiComponents\button.h">
+      <Filter>Archivos de encabezado\uiComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="src\assets\fontManager.h">
+      <Filter>Archivos de encabezado\assets</Filter>
+    </ClInclude>
+    <ClInclude Include="src\constants\colors.h">
+      <Filter>Archivos de encabezado\constants</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -127,6 +145,15 @@
     </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\screens\menu.cpp">
+      <Filter>Archivos de origen\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="src\uiComponents\button.cpp">
+      <Filter>Archivos de origen\uiComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="src\assets\fontManager.cpp">
+      <Filter>Archivos de origen\assets</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

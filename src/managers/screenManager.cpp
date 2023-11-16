@@ -3,15 +3,16 @@
 #include "raylib.h"
 
 #include "screens/gameplay.h"
+#include "screens/menu.h"
 
 namespace LeFlappyBird {
 	namespace ScreensManager {
 		static Screens actualScreen;
 
 		void initManager() {
-			actualScreen = Screens::GAMEPLAY;
+			actualScreen = Screens::MENU;
 
-			Gameplay::initGameplay();
+			Menu::initMenu();
 		}
 
 		void changeScreenTo(Screens screen) {
@@ -19,6 +20,7 @@ namespace LeFlappyBird {
 
 			switch (actualScreen) {
 				case Screens::MENU:
+					Menu::initMenu();
 					break;
 				case Screens::GAMEPLAY:
 					Gameplay::initGameplay();
@@ -35,6 +37,7 @@ namespace LeFlappyBird {
 		void drawScreen() {
 			switch (actualScreen) {
 				case Screens::MENU:
+					Menu::drawMenu();
 					break;
 				case Screens::CREDITS:
 					break;
@@ -51,6 +54,7 @@ namespace LeFlappyBird {
 		void updateScreen(bool& shouldClose) {
 			switch (actualScreen) {
 				case Screens::MENU:
+					Menu::checkMenuInputAndCollision(shouldClose);
 					break;
 				case Screens::CREDITS:
 					break;

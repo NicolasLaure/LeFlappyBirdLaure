@@ -4,6 +4,7 @@
 
 #include "managers/screenManager.h"
 #include "assets/assetManager.h"
+#include "assets/fontManager.h"
 #include "constants/dimensions.h"
 
 namespace LeFlappyBird {
@@ -19,6 +20,7 @@ namespace LeFlappyBird {
 
             AssetManager::init();
             ScreensManager::initManager();
+            FontManager::init();
 
             InitAudioDevice();
         }
