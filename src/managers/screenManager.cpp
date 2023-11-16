@@ -4,6 +4,7 @@
 
 #include "screens/gameplay.h"
 #include "screens/menu.h"
+#include "screens/credits.h"
 
 namespace LeFlappyBird {
 	namespace ScreensManager {
@@ -28,6 +29,7 @@ namespace LeFlappyBird {
 				case Screens::YOU_LOST:
 					break;
 				case Screens::CREDITS:
+					Credits::initCredits();
 					break;
 				case Screens::RULES:
 					break;
@@ -40,6 +42,7 @@ namespace LeFlappyBird {
 					Menu::drawMenu();
 					break;
 				case Screens::CREDITS:
+					Credits::drawCredits();
 					break;
 				case Screens::YOU_LOST:
 					break;
@@ -57,6 +60,7 @@ namespace LeFlappyBird {
 					Menu::checkMenuInputAndCollision(shouldClose);
 					break;
 				case Screens::CREDITS:
+					Credits::checkCreditsInputAndCollision();
 					break;
 				case Screens::RULES:
 					break;

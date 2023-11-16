@@ -105,6 +105,9 @@
     <ClInclude Include="src\constants\colors.h">
       <Filter>Archivos de encabezado\constants</Filter>
     </ClInclude>
+    <ClInclude Include="src\screens\credits.h">
+      <Filter>Archivos de encabezado\screens</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\constants\dimensions.cpp">
@@ -154,6 +157,9 @@
     </ClCompile>
     <ClCompile Include="src\assets\fontManager.cpp">
       <Filter>Archivos de origen\assets</Filter>
+    </ClCompile>
+    <ClCompile Include="src\screens\credits.cpp">
+      <Filter>Archivos de origen\screens</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
