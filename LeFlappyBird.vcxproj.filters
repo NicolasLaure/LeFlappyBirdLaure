@@ -108,6 +108,9 @@
     <ClInclude Include="src\screens\credits.h">
       <Filter>Archivos de encabezado\screens</Filter>
     </ClInclude>
+    <ClInclude Include="src\managers\wallsManager.h">
+      <Filter>Archivos de encabezado\managers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\constants\dimensions.cpp">
@@ -160,6 +163,9 @@
     </ClCompile>
     <ClCompile Include="src\screens\credits.cpp">
       <Filter>Archivos de origen\screens</Filter>
+    </ClCompile>
+    <ClCompile Include="src\managers\wallsManager.cpp">
+      <Filter>Archivos de origen\managers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

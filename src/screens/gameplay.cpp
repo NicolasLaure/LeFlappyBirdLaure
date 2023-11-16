@@ -1,10 +1,10 @@
 #include "gameplay.h"
 
 #include "entities/bird.h"
-#include "entities/wall.h"
 #include "managers/screenManager.h"
 #include "managers/uiManager.h"
 #include "managers/backgroundManager.h"
+#include "managers/wallsManager.h"
 #include "utils/screen.h"
 #include "utils/math.h"
 
@@ -12,7 +12,6 @@ namespace LeFlappyBird {
 	namespace Gameplay {
 		struct GameplayEntities {
 			Bird::Bird bird;
-			Wall::Wall wall;
 			int points = 0;
 		};
 
@@ -25,12 +24,12 @@ namespace LeFlappyBird {
 		static void initManagers() {
 			BackgroundManager::initBackground();
 			UiManager::init();
+			WallsManager::init();
 		}
 
 		static void initEntities() {
 			gameplayEntities = {
 				Bird::createBird(BIRD_INIT_POSITION),
-				Wall::createWall(WALL_INIT_POSITION),
 				0
 			};
 		}
@@ -38,12 +37,10 @@ namespace LeFlappyBird {
 		static void restartEntities() {
 			gameplayEntities = {
 				Bird::createBird(BIRD_INIT_POSITION),
-				Wall::createWall({
-						WALL_INIT_POSITION.x,
-						static_cast<float>(Wall::createRandomYStartValue())
-					}),
 				0
 			};
+
+			WallsManager::init();
 		}
 
 		void initGameplay() {
@@ -52,20 +49,15 @@ namespace LeFlappyBird {
 				MathUtils::getHalf(ScreenUtils::getScreenHeight())
 			};
 
-			WALL_INIT_POSITION = {
-			ScreenUtils::getScreenWidth(),
-			static_cast<float>(Wall::createRandomYStartValue())
-			};
-
 			initEntities();
 			initManagers();
 		}
 
 		void updateGameplay() {
 			Bird::updateBird(gameplayEntities.bird);
-			Wall::updateWall(gameplayEntities.wall);
+			WallsManager::updateWalls();
 
-			if (Bird::isCollidingBottom(gameplayEntities.bird) || Wall::collidesWith(gameplayEntities.wall, gameplayEntities.bird)) {
+			if (Bird::isCollidingBottom(gameplayEntities.bird) || WallsManager::isCollidingWithWall(gameplayEntities.bird)) {
 				restartEntities();
 			};
 
@@ -76,7 +68,7 @@ namespace LeFlappyBird {
 		void drawGameplay() {
 			BackgroundManager::drawBackground();
 			Bird::drawBird(gameplayEntities.bird);
-			Wall::drawWall(gameplayEntities.wall);
+			WallsManager::draw();
 			UiManager::draw();
 		}
 	}

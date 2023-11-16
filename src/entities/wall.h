@@ -14,7 +14,8 @@ namespace LeFlappyBird {
 		Wall createWall(Vector2 position);
 		void updateWall(Wall& wall);
 		void drawWall(Wall wall);
-		int createRandomYStartValue();
+		int createRandomYStartValue(int topMargin, int bottomMargin);
+		bool isDisappearing(Wall wall);
 		bool collidesWith(Wall wall, Bird::Bird bird);
 	}
 }

@@ -29,6 +29,7 @@
     <ClCompile Include="src\managers\screenManager.cpp" />
     <ClCompile Include="src\managers\backgroundManager.cpp" />
     <ClCompile Include="src\managers\uiManager.cpp" />
+    <ClCompile Include="src\managers\wallsManager.cpp" />
     <ClCompile Include="src\screens\credits.cpp" />
     <ClCompile Include="src\screens\gameplay.cpp" />
     <ClCompile Include="src\screens\menu.cpp" />
@@ -48,6 +49,7 @@
     <ClInclude Include="src\managers\backgroundManager.h" />
     <ClInclude Include="src\managers\screenManager.h" />
     <ClInclude Include="src\managers\uiManager.h" />
+    <ClInclude Include="src\managers\wallsManager.h" />
     <ClInclude Include="src\screens\credits.h" />
     <ClInclude Include="src\screens\gameplay.h" />
     <ClInclude Include="src\screens\menu.h" />

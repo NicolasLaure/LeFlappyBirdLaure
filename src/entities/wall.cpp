@@ -36,13 +36,6 @@ namespace LeFlappyBird {
 
 		void updateWall(Wall& wall) {
 			wall.position.x -= WALL_VELOCITY * GetFrameTime();
-
-			if (wall.position.x < -SPACE_SIZE.x) {
-				wall.position = {
-					ScreenUtils::getScreenWidth(),
-					static_cast<float>(createRandomYStartValue())
-				};
-			}
 		}
 
 		void drawWall(Wall wall) {
@@ -51,12 +44,16 @@ namespace LeFlappyBird {
 			DrawRectangleRec(getBottomRectangle(wall), YELLOW);
 		};
 
-		int createRandomYStartValue() {
+		int createRandomYStartValue(int topMargin, int bottomMargin) {
 			const int SPACE_MARGIN = 10;
 			return GetRandomValue(
-				SPACE_MARGIN,
-				static_cast<int>(ScreenUtils::getScreenHeight() - SPACE_SIZE.y - SPACE_MARGIN)
+				SPACE_MARGIN + topMargin,
+				static_cast<int>(ScreenUtils::getScreenHeight() - SPACE_SIZE.y - SPACE_MARGIN - bottomMargin)
 			);
+		}
+
+		bool isDisappearing(Wall wall) {
+			return wall.position.x < -SPACE_SIZE.x;
 		}
 
 		bool collidesWith(Wall wall, Bird::Bird bird) {
