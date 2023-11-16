@@ -7,8 +7,6 @@ namespace LeFlappyBird {
 		void init() {};
 		void update() {};
 
-		void draw() {
-			DrawText("0.1", 10, 0, 50, WHITE);
-		};
+		void draw() {};
 	}
 }

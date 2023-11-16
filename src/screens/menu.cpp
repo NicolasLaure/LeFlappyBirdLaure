@@ -88,6 +88,8 @@ namespace LeFlappyBird {
 				drawOptionBox(menuOptions[i]);
 				Buttons::drawCenteredTextInButton(menuOptions[i].optionButton, menuOptions[i].text.c_str());
 			}
+
+			FontManager::drawText("0.2", { 10, 0 }, TITLE_FONT_SIZE, TITLE_SPACING, WHITE);
 		}
 
 		void checkMenuInputAndCollision(bool& shouldClose) {
