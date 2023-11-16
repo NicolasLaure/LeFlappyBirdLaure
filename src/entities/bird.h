@@ -7,7 +7,7 @@ namespace LeFlappyBird {
 			Vector2 position;
 			Vector2 velocity;
 			Vector2 size;
-			KeyboardKey goUpbutton = KEY_UP;
+			KeyboardKey goUpbutton = KEY_SPACE;
 		};
 
 		Bird createBird(Vector2 position);
