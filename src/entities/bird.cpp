@@ -13,6 +13,7 @@ namespace LeFlappyBird {
 		static const float BIRD_VELOCITY_UP = -400.0f;
 		static const float BIRD_ACCELERATION = 1000.0f;
 		static const Vector2 BIRD_SIZE = { 64.0f, 64.0f };
+		static const Vector2 BIRD_COLLISSION_SIZE = { 50.0f, 50.0f };
 		
 		static Timer::Timer flyingTimer;
 		static const double FLYING_TIMER_LIFETIME = 0.3;
@@ -66,10 +67,10 @@ namespace LeFlappyBird {
 		void drawBird(Bird bird) {
 #ifdef _DEBUG
 			DrawRectangleRec({
-				bird.position.x,
-				bird.position.y,
-				bird.size.x,
-				bird.size.y
+				bird.position.x + MathUtils::getHalf((BIRD_SIZE.x - BIRD_COLLISSION_SIZE.x)),
+				bird.position.y + MathUtils::getHalf((BIRD_SIZE.y - BIRD_COLLISSION_SIZE.y)),
+				BIRD_COLLISSION_SIZE.x,
+				BIRD_COLLISSION_SIZE.y
 			}, RED);
 #endif
 			Texture2D birdTexture = AssetManager::getTexture(
@@ -109,10 +110,10 @@ namespace LeFlappyBird {
 
 		Rectangle getRectangle(Bird bird) {
 			return {
-				bird.position.x,
-				bird.position.y,
-				bird.size.x,
-				bird.size.y
+				bird.position.x + MathUtils::getHalf((BIRD_SIZE.x - BIRD_COLLISSION_SIZE.x)),
+				bird.position.y + MathUtils::getHalf((BIRD_SIZE.y - BIRD_COLLISSION_SIZE.y)),
+				BIRD_COLLISSION_SIZE.x,
+				BIRD_COLLISSION_SIZE.y
 			};
 		}
 
