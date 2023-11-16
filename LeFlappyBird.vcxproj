@@ -164,7 +164,7 @@
       <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
     </Link>
     <PreBuildEvent>
-      <Command>"$(SolutionDir)scripts/assets.bat" "$(SolutionDir)res\" "$(OutDir)"</Command>
+      <Command>"$(SolutionDir)scripts/assets.bat" "$(SolutionDir)res\" "$(OutDir)res\"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
