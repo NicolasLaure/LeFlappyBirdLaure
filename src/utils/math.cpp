@@ -2,10 +2,8 @@
 
 #include <math.h>
 
-namespace LeFlappyBird 
-{
-	namespace MathUtils 
-	{
+namespace LeFlappyBird {
+	namespace MathUtils	{
 		float clamp(float value, float min, float max)
 		{
 			return (value < min) ? min : value > max ? max : value;

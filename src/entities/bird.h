@@ -1,12 +1,9 @@
 #pragma once
 #include "raylib.h"
 
-namespace LeFlappyBird
-{
-	namespace Bird
-	{
-		struct Bird
-		{
+namespace LeFlappyBird {
+	namespace Bird {
+		struct Bird {
 			Vector2 position{};
 			Vector2 velocity{};
 			Vector2 size{};
