@@ -26,6 +26,7 @@
     <ClCompile Include="src\entities\wall.cpp" />
     <ClCompile Include="src\game.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\managers\pauseManager.cpp" />
     <ClCompile Include="src\managers\screenManager.cpp" />
     <ClCompile Include="src\managers\backgroundManager.cpp" />
     <ClCompile Include="src\managers\uiManager.cpp" />
@@ -47,6 +48,7 @@
     <ClInclude Include="src\entities\wall.h" />
     <ClInclude Include="src\game.h" />
     <ClInclude Include="src\managers\backgroundManager.h" />
+    <ClInclude Include="src\managers\pauseManager.h" />
     <ClInclude Include="src\managers\screenManager.h" />
     <ClInclude Include="src\managers\uiManager.h" />
     <ClInclude Include="src\managers\wallsManager.h" />

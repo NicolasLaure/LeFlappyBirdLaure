@@ -4,7 +4,7 @@ namespace LeFlappyBird {
 	namespace Gameplay {
 
 		void initGameplay();
-		void updateGameplay();
+		void updateGameplay(bool& isPaused);
 		void drawGameplay();
 	}
 }

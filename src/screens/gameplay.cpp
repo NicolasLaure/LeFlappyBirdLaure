@@ -53,13 +53,16 @@ namespace LeFlappyBird {
 			initManagers();
 		}
 
-		void updateGameplay() {
+		void updateGameplay(bool& isPaused) {
 			Bird::updateBird(gameplayEntities.bird);
 			WallsManager::updateWalls();
 
 			if (Bird::isCollidingBottom(gameplayEntities.bird) || WallsManager::isCollidingWithWall(gameplayEntities.bird)) {
 				restartEntities();
 			};
+
+			if (IsKeyPressed(KEY_ESCAPE) || IsMouseButtonPressed(MOUSE_BUTTON_MIDDLE))
+				isPaused = true;
 
 			BackgroundManager::updateBackground();
 			UiManager::update();
