@@ -8,12 +8,15 @@
 #include "constants/colors.h"
 #include "assets/fontManager.h"
 
-namespace LeFlappyBird {
-	namespace Buttons {
+namespace LeFlappyBird
+{
+	namespace Buttons
+	{
 		static const float BUTTON_TEXT_FONT_SIZE = 40.0f;
 		static const float BUTTON_TEXT_SPACING = 3.0f;
 
-		static Rectangle getInsideRectangle(Rectangle rectangle) {
+		static Rectangle getInsideRectangle(Rectangle rectangle)
+		{
 			return {
 				rectangle.x + Dimensions::BOX_BORDER_WIDTH,
 				rectangle.y + Dimensions::BOX_BORDER_WIDTH,
@@ -22,18 +25,22 @@ namespace LeFlappyBird {
 			};
 		}
 
-		void drawButton(Button button) {
-			if (button.isHovered) {
+		void drawButton(Button button)
+		{
+			if (button.isHovered)
+			{
 				DrawRectangleRec(button.outsideRectangle, button.outsideColor);
 
 				DrawRectangleRec(button.insideRectangle, IsMouseButtonDown(MOUSE_BUTTON_LEFT) ? button.focusColor : button.insideColor);
 			}
-			else {
+			else
+			{
 				DrawRectangleRec(button.outsideRectangle, button.insideColor);
 			}
 		}
 
-		void drawCenteredTextInButton(Button button, const char* text) {
+		void drawCenteredTextInButton(Button button, const char* text)
+		{
 			Vector2 textSize = FontManager::measureText(text, BUTTON_TEXT_FONT_SIZE, BUTTON_TEXT_SPACING);
 			float optionTextPosX = button.outsideRectangle.x + MathUtils::getHalf(button.outsideRectangle.width) - MathUtils::getHalf(textSize.x);
 			float optionTextPosY = button.outsideRectangle.y + MathUtils::getHalf(button.outsideRectangle.height) - MathUtils::getHalf(BUTTON_TEXT_FONT_SIZE);
@@ -47,17 +54,21 @@ namespace LeFlappyBird {
 			);
 		}
 
-		void drawTextureInButton(Button button, Texture2D texture) {
-			DrawTextureEx(
-				texture,
-				{ button.outsideRectangle.x, button.outsideRectangle.y },
-				0,
-				1,
-				WHITE
-			);
+		void drawTextureInButton(Button button, Texture2D texture)
+		{
+			if (button.isHovered)
+			{
+				DrawTextureEx(texture, { button.outsideRectangle.x, button.outsideRectangle.y }, 0, 1, IsMouseButtonDown(MOUSE_BUTTON_LEFT) ? button.focusColor : button.insideColor);
+			}
+			else
+			{
+				DrawTextureEx(texture, { button.outsideRectangle.x, button.outsideRectangle.y }, 0, 1, button.insideColor);
+			}
+
 		}
 
-		void updateButton(Button& button) {
+		void updateButton(Button& button)
+		{
 			Vector2 mousePosition = GetMousePosition();
 
 			bool isMouseCollisioningWithButton = MathUtils::checkPointToRectangleCollision(button.outsideRectangle, mousePosition);
@@ -67,21 +78,25 @@ namespace LeFlappyBird {
 
 			if (isMouseCollisioningWithButton && IsMouseButtonDown(MOUSE_BUTTON_LEFT) && !isClicking) return;
 
-			if (isMouseCollisioningWithButton) {
-				if (isReleased && button.isHovered) {
+			if (isMouseCollisioningWithButton)
+			{
+				if (isReleased && button.isHovered)
+				{
 					button.isClicked = true;
 				}
 
 				button.isHovered = true;
 
 			}
-			else {
+			else
+			{
 				button.isClicked = false;
 				button.isHovered = false;
 			}
 		}
 
-		Button createButton(Rectangle rectangle) {
+		Button createButton(Rectangle rectangle)
+		{
 			return {
 				getInsideRectangle(rectangle),
 				rectangle,
@@ -91,7 +106,8 @@ namespace LeFlappyBird {
 			};
 		}
 
-		Button createButtonWithColors(Rectangle rectangle, Color insideColor, Color outsideColor, Color focusColor) {
+		Button createButtonWithColors(Rectangle rectangle, Color insideColor, Color outsideColor, Color focusColor)
+		{
 			return {
 				getInsideRectangle(rectangle),
 				rectangle,

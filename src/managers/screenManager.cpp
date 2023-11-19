@@ -17,6 +17,8 @@ namespace LeFlappyBird {
 			actualScreen = Screens::MENU;
 
 			Menu::initMenu();
+
+			Pause::init();
 		}
 
 		void changeScreenTo(Screens screen) {

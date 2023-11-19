@@ -4,7 +4,8 @@
 
 namespace LeFlappyBird {
 	namespace AssetManager {
-		enum Assets {
+		enum Assets
+		{
 			PARALLAX_BACKGROUND,
 			PARALLAX_BACKGROUND_TREES,
 			PARALLAX_BACKGROUND_MOUNTAINS,
@@ -13,6 +14,9 @@ namespace LeFlappyBird {
 			LEMONPIE,
 			LEMONPIE_FLYING,
 			CREDITS,
+			PAUSE_PANEL,
+			CONTINUE_BUTTON,
+			MAIN_MENU_BUTTON,
 			ASSETS_COUNT
 		};
 

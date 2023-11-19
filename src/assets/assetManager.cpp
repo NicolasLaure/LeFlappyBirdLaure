@@ -18,6 +18,9 @@ namespace LeFlappyBird {
 			AssetWithTexture lemonPie = { Assets::LEMONPIE, LoadTexture("res/images/lemonPie.png") };
 			AssetWithTexture flyingLemonPie = { Assets::LEMONPIE_FLYING, LoadTexture("res/images/lemonPie-flying.png") };
 			AssetWithTexture credits = { Assets::CREDITS, LoadTexture("res/images/credits.png") };
+			AssetWithTexture pausePanel = { Assets::PAUSE_PANEL, LoadTexture("res/images/pausePanel.png") };;
+			AssetWithTexture continueButton = { Assets::CONTINUE_BUTTON, LoadTexture("res/images/continueButton.png") };;
+			AssetWithTexture mainMenuButton = { Assets::MAIN_MENU_BUTTON, LoadTexture("res/images/mainMenuButton.png") };;
 
 			AssetWithTexture auxTextures[ASSETS_COUNT] = {
 				background,
@@ -27,7 +30,10 @@ namespace LeFlappyBird {
 				flyingCheesecake,
 				lemonPie,
 				flyingLemonPie,
-				credits
+				credits,
+				pausePanel,
+				continueButton,
+				mainMenuButton
 			};
 
 			for (int i = 0; i < ASSETS_COUNT; i++) {
