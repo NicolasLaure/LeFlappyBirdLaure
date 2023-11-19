@@ -39,18 +39,24 @@ namespace LeFlappyBird {
 			bird.position = birdEntity.position;
 		}
 
-		Bird createBird(Vector2 position) {
+		Bird createBird(Vector2 position, bool isPlayerOne) {
 			Timer::startTimer(&flyingTimer, 0.0);
 
 			return {
 				position,
 				{ 0, 0 },
-				BIRD_SIZE
+				BIRD_SIZE,
+				isPlayerOne
 			};
 		};
 
 		void updateBird(Bird& bird) {
-			if (IsKeyPressed(bird.goUpbutton) && !isBirdInNonFlySpace(bird)) {
+			if (bird.isPlayerOne && IsKeyPressed(bird.goUpbutton) && !isBirdInNonFlySpace(bird)) {
+				Timer::startTimer(&flyingTimer, FLYING_TIMER_LIFETIME);
+				bird.velocity.y = BIRD_VELOCITY_UP;
+			}
+			else if (!bird.isPlayerOne && IsMouseButtonPressed(bird.goUpMouseButton) && !isBirdInNonFlySpace(bird))
+			{
 				Timer::startTimer(&flyingTimer, FLYING_TIMER_LIFETIME);
 				bird.velocity.y = BIRD_VELOCITY_UP;
 			}
@@ -73,11 +79,12 @@ namespace LeFlappyBird {
 				BIRD_COLLISSION_SIZE.y
 			}, RED);
 #endif
-			Texture2D birdTexture = AssetManager::getTexture(
-				!Timer::timerDone(flyingTimer) ? 
-				AssetManager::CHEESECAKE_FLYING : 
-				AssetManager::CHEESECAKE
-			);
+			Texture2D birdTexture;
+			
+			if(bird.isPlayerOne)
+				birdTexture = AssetManager::getTexture(!Timer::timerDone(flyingTimer) ? AssetManager::CHEESECAKE_FLYING : AssetManager::CHEESECAKE);
+			else
+				birdTexture = AssetManager::getTexture(!Timer::timerDone(flyingTimer) ? AssetManager::LEMONPIE_FLYING : AssetManager::LEMONPIE);
 
 			Rectangle source = {
 				0.0f,

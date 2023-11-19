@@ -8,7 +8,8 @@
 namespace LeFlappyBird {
 	namespace Menu {
 		enum Option {
-			PLAY,
+			SINGLEPLAYER,
+			MULTIPLAYER,
 			READ_RULES,
 			READ_CREDITS,
 			EXIT,

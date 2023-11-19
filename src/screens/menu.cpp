@@ -25,8 +25,10 @@ namespace LeFlappyBird {
 
 		static std::string optionToText(Option option) {
 			switch (option) {
-			case Option::PLAY:
-				return "Play";
+			case Option::SINGLEPLAYER:
+				return "Single Player";
+			case Option::MULTIPLAYER:
+				return "Two Players";
 			case Option::EXIT:
 				return "Exit";
 			case Option::READ_RULES:
@@ -40,8 +42,11 @@ namespace LeFlappyBird {
 
 		static void actionPerMenuOption(Option option, bool& shouldClose) {
 			switch (option) {
-			case Option::PLAY:
+			case Option::SINGLEPLAYER:
 				ScreensManager::changeScreenTo(ScreensManager::Screens::GAMEPLAY);
+				break;
+			case Option::MULTIPLAYER:
+				ScreensManager::changeScreenTo(ScreensManager::Screens::MULTIPLAYER_GAMEPLAY);
 				break;
 			case Option::READ_CREDITS:
 				ScreensManager::changeScreenTo(ScreensManager::Screens::CREDITS);

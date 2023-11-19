@@ -27,7 +27,10 @@ namespace LeFlappyBird {
 				Menu::initMenu();
 				break;
 			case Screens::GAMEPLAY:
-				Gameplay::initGameplay();
+				Gameplay::initGameplay(false);
+				break;
+			case Screens::MULTIPLAYER_GAMEPLAY:
+				Gameplay::initGameplay(true);
 				break;
 			case Screens::YOU_LOST:
 				break;
@@ -52,6 +55,7 @@ namespace LeFlappyBird {
 			case Screens::RULES:
 				break;
 			case Screens::GAMEPLAY:
+			case Screens::MULTIPLAYER_GAMEPLAY:
 				Gameplay::drawGameplay();
 
 				if (isPaused)
@@ -71,6 +75,7 @@ namespace LeFlappyBird {
 			case Screens::RULES:
 				break;
 			case Screens::GAMEPLAY:
+			case Screens::MULTIPLAYER_GAMEPLAY:
 				if (!isPaused)
 					Gameplay::updateGameplay(isPaused);
 				else

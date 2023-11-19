@@ -15,6 +15,8 @@ namespace LeFlappyBird {
 			AssetWithTexture backgroundMountains = { Assets::PARALLAX_BACKGROUND_MOUNTAINS, LoadTexture("res/images/parallax-mountain-mountains.png") };
 			AssetWithTexture cheesecake = { Assets::CHEESECAKE, LoadTexture("res/images/cheesecake.png") };
 			AssetWithTexture flyingCheesecake = { Assets::CHEESECAKE_FLYING, LoadTexture("res/images/cheesecake-flying.png") };
+			AssetWithTexture lemonPie = { Assets::LEMONPIE, LoadTexture("res/images/lemonPie.png") };
+			AssetWithTexture flyingLemonPie = { Assets::LEMONPIE_FLYING, LoadTexture("res/images/lemonPie-flying.png") };
 			AssetWithTexture credits = { Assets::CREDITS, LoadTexture("res/images/credits.png") };
 
 			AssetWithTexture auxTextures[ASSETS_COUNT] = {
@@ -23,6 +25,8 @@ namespace LeFlappyBird {
 				backgroundMountains,
 				cheesecake,
 				flyingCheesecake,
+				lemonPie,
+				flyingLemonPie,
 				credits
 			};
 
