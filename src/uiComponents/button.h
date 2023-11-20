@@ -11,6 +11,7 @@ namespace LeFlappyBird {
 			Color outsideColor;
 			bool isHovered = false;
 			bool isClicked = false;
+
 		};
 
 		void drawButton(Button button);

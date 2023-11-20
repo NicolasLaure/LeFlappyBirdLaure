@@ -56,13 +56,14 @@ namespace LeFlappyBird
 
 		void drawTextureInButton(Button button, Texture2D texture)
 		{
+			float textureScale = button.insideRectangle.width / texture.width;
 			if (button.isHovered)
 			{
-				DrawTextureEx(texture, { button.outsideRectangle.x, button.outsideRectangle.y }, 0, 1, IsMouseButtonDown(MOUSE_BUTTON_LEFT) ? button.focusColor : button.insideColor);
+				DrawTextureEx(texture, { button.outsideRectangle.x, button.outsideRectangle.y }, 0, textureScale, IsMouseButtonDown(MOUSE_BUTTON_LEFT) ? button.focusColor : button.insideColor);
 			}
 			else
 			{
-				DrawTextureEx(texture, { button.outsideRectangle.x, button.outsideRectangle.y }, 0, 1, button.insideColor);
+				DrawTextureEx(texture, { button.outsideRectangle.x, button.outsideRectangle.y }, 0, textureScale, button.insideColor);
 			}
 
 		}
@@ -74,19 +75,21 @@ namespace LeFlappyBird
 			bool isMouseCollisioningWithButton = MathUtils::checkPointToRectangleCollision(button.outsideRectangle, mousePosition);
 
 			bool isClicking = IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
-			bool isReleased = IsMouseButtonReleased(MOUSE_BUTTON_LEFT);
+			bool isJustReleased = IsMouseButtonReleased(MOUSE_BUTTON_LEFT);
 
 			if (isMouseCollisioningWithButton && IsMouseButtonDown(MOUSE_BUTTON_LEFT) && !isClicking) return;
 
 			if (isMouseCollisioningWithButton)
 			{
-				if (isReleased && button.isHovered)
+
+				if (isJustReleased && button.isHovered)
 				{
 					button.isClicked = true;
 				}
+				else if (!isJustReleased)
+					button.isClicked = false;
 
 				button.isHovered = true;
-
 			}
 			else
 			{
