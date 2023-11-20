@@ -114,6 +114,9 @@
     <ClInclude Include="src\managers\pauseManager.h">
       <Filter>Archivos de encabezado\managers</Filter>
     </ClInclude>
+    <ClInclude Include="src\screens\rules.h">
+      <Filter>Archivos de encabezado\screens</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\constants\dimensions.cpp">
@@ -172,6 +175,9 @@
     </ClCompile>
     <ClCompile Include="src\managers\pauseManager.cpp">
       <Filter>Archivos de origen\managers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\screens\rules.cpp">
+      <Filter>Archivos de origen\screens</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

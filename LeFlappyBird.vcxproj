@@ -34,6 +34,7 @@
     <ClCompile Include="src\screens\credits.cpp" />
     <ClCompile Include="src\screens\gameplay.cpp" />
     <ClCompile Include="src\screens\menu.cpp" />
+    <ClCompile Include="src\screens\rules.cpp" />
     <ClCompile Include="src\uiComponents\button.cpp" />
     <ClCompile Include="src\utils\math.cpp" />
     <ClCompile Include="src\utils\screen.cpp" />
@@ -55,6 +56,7 @@
     <ClInclude Include="src\screens\credits.h" />
     <ClInclude Include="src\screens\gameplay.h" />
     <ClInclude Include="src\screens\menu.h" />
+    <ClInclude Include="src\screens\rules.h" />
     <ClInclude Include="src\uiComponents\button.h" />
     <ClInclude Include="src\utils\math.h" />
     <ClInclude Include="src\utils\screen.h" />
