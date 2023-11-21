@@ -16,8 +16,10 @@ namespace LeFlappyBird
 		{
 			Bird::Bird firstPlayerBird;
 			Bird::Bird secondPlayerBird;
-			int points = 0;
+			
 		};
+
+		static int score = 0;
 
 		static bool isMultiPlayer = false;
 		static	Vector2 BIRD_INIT_POSITION;
@@ -48,7 +50,6 @@ namespace LeFlappyBird
 				gameplayEntities = {
 					Bird::createBird(BIRD_INIT_POSITION, true),
 					Bird::createBird(BIRD_INIT_POSITION, false),
-					0
 				};
 			}
 		}
@@ -60,7 +61,6 @@ namespace LeFlappyBird
 				gameplayEntities = {
 					Bird::createBird(BIRD_INIT_POSITION, true),
 					NULL,
-					0
 				};
 			}
 			else
@@ -68,11 +68,12 @@ namespace LeFlappyBird
 				gameplayEntities = {
 					Bird::createBird(BIRD_INIT_POSITION, true),
 					Bird::createBird(BIRD_INIT_POSITION, false),
-					0
 				};
 			}
 
 			WallsManager::init();
+
+			score = 0;
 		}
 
 		void initGameplay(bool isMultiplayer)
@@ -90,7 +91,7 @@ namespace LeFlappyBird
 		{
 
 			Bird::updateBird(gameplayEntities.firstPlayerBird);
-			WallsManager::updateWalls();
+			WallsManager::updateWalls(score);
 
 			if (Bird::isCollidingBottom(gameplayEntities.firstPlayerBird) || WallsManager::isCollidingWithWall(gameplayEntities.firstPlayerBird))
 			{
@@ -121,7 +122,7 @@ namespace LeFlappyBird
 			if (isMultiPlayer)
 				Bird::drawBird(gameplayEntities.secondPlayerBird);
 			WallsManager::draw();
-			UiManager::draw();
+			UiManager::draw(score);
 		}
 	}
 }

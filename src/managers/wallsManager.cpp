@@ -25,7 +25,7 @@ namespace LeFlappyBird {
 			walls = { Wall::createWall(lastWallPosition) };
 		};
 
-		void updateWalls() {
+		void updateWalls(int& score) {
 			if (Timer::timerDone(wallSpawnTimer)) {
 				Vector2 nextWallPosition;
 				if(lastWallPosition.y > MathUtils::getHalf(ScreenUtils::getScreenHeight())) {
@@ -61,6 +61,7 @@ namespace LeFlappyBird {
 
 			for (size_t i = 0; i < walls.size(); i++) {
 				if (Wall::isDisappearing(walls[i])) {
+					score++;
 					walls.erase(walls.begin() + i);
 				}
 				else {
