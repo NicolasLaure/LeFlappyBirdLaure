@@ -26,6 +26,7 @@ namespace LeFlappyBird
 			AssetWithTexture rulesPageOne = { Assets::RULES_PAGE_ONE, LoadTexture("res/images/rulesPage1.png") };
 			AssetWithTexture rulesPageTwo = { Assets::RULES_PAGE_TWO, LoadTexture("res/images/rulesPage2.png") };
 			AssetWithTexture pausePanel = { Assets::PAUSE_PANEL, LoadTexture("res/images/pausePanel.png") };
+			AssetWithTexture gameOverPanel = { Assets::GAME_OVER_PANEL, LoadTexture("res/images/gameOverPanel.png") };
 			AssetWithTexture continueButton = { Assets::CONTINUE_BUTTON, LoadTexture("res/images/continueButton.png") };
 			AssetWithTexture mainMenuButton = { Assets::MAIN_MENU_BUTTON, LoadTexture("res/images/mainMenuButton.png") };
 
@@ -43,6 +44,7 @@ namespace LeFlappyBird
 				rulesPageOne,
 				rulesPageTwo,
 				pausePanel,
+				gameOverPanel,
 				continueButton,
 				mainMenuButton
 			};

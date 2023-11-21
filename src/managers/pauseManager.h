@@ -7,6 +7,6 @@ namespace LeFlappyBird
 	{
 		void init();
 		void Update(bool& isPaused);
-		void Draw();
+		void Draw(bool isGameOver, int score);
 	}
 }

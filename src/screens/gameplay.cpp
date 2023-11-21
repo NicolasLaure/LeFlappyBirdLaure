@@ -16,17 +16,18 @@ namespace LeFlappyBird
 		{
 			Bird::Bird firstPlayerBird;
 			Bird::Bird secondPlayerBird;
-			
+
 		};
 
-		static int score = 0;
-
 		static bool isMultiPlayer = false;
+
 		static	Vector2 BIRD_INIT_POSITION;
 
 		static Vector2 WALL_INIT_POSITION;
 
 		static GameplayEntities gameplayEntities;
+
+		void gameOver(bool& isPaused, bool& isGameOver);
 
 		static void initManagers()
 		{
@@ -42,7 +43,6 @@ namespace LeFlappyBird
 				gameplayEntities = {
 					Bird::createBird(BIRD_INIT_POSITION, true),
 					NULL,
-					0
 				};
 			}
 			else
@@ -54,7 +54,7 @@ namespace LeFlappyBird
 			}
 		}
 
-		static void restartEntities()
+		static void restartEntities(int& score)
 		{
 			if (!isMultiPlayer)
 			{
@@ -87,15 +87,21 @@ namespace LeFlappyBird
 			initManagers();
 		}
 
-		void updateGameplay(bool& isPaused)
+		void updateGameplay(bool& isPaused, bool& isGameOver, int& score)
 		{
+			if (isGameOver)
+			{
+				restartEntities(score);
+				isGameOver = false;
+			}
 
 			Bird::updateBird(gameplayEntities.firstPlayerBird);
 			WallsManager::updateWalls(score);
 
 			if (Bird::isCollidingBottom(gameplayEntities.firstPlayerBird) || WallsManager::isCollidingWithWall(gameplayEntities.firstPlayerBird))
 			{
-				restartEntities();
+				gameOver(isPaused, isGameOver);
+				//restartEntities();
 			};
 
 			if (isMultiPlayer)
@@ -104,7 +110,8 @@ namespace LeFlappyBird
 
 				if (Bird::isCollidingBottom(gameplayEntities.secondPlayerBird) || WallsManager::isCollidingWithWall(gameplayEntities.secondPlayerBird))
 				{
-					restartEntities();
+					gameOver(isPaused, isGameOver);
+					//restartEntities();
 				};
 			}
 
@@ -115,7 +122,7 @@ namespace LeFlappyBird
 			UiManager::update();
 		}
 
-		void drawGameplay()
+		void drawGameplay(int score)
 		{
 			BackgroundManager::drawBackground();
 			Bird::drawBird(gameplayEntities.firstPlayerBird);
@@ -123,6 +130,12 @@ namespace LeFlappyBird
 				Bird::drawBird(gameplayEntities.secondPlayerBird);
 			WallsManager::draw();
 			UiManager::draw(score);
+		}
+
+		void gameOver(bool& isPaused, bool& isGameOver)
+		{
+			isGameOver = true;
+			isPaused = true;
 		}
 	}
 }

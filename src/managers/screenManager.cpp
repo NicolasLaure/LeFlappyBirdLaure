@@ -13,7 +13,8 @@ namespace LeFlappyBird {
 		static Screens actualScreen;
 
 		static bool isPaused = false;
-
+		static bool isGameOver = false;
+		static int score = 0;
 		void initManager() {
 			actualScreen = Screens::MENU;
 
@@ -61,10 +62,10 @@ namespace LeFlappyBird {
 				break;
 			case Screens::GAMEPLAY:
 			case Screens::MULTIPLAYER_GAMEPLAY:
-				Gameplay::drawGameplay();
+				Gameplay::drawGameplay(score);
 
 				if (isPaused)
-					Pause::Draw();
+					Pause::Draw(isGameOver, score);
 				break;
 			};
 		}
@@ -83,7 +84,7 @@ namespace LeFlappyBird {
 			case Screens::GAMEPLAY:
 			case Screens::MULTIPLAYER_GAMEPLAY:
 				if (!isPaused)
-					Gameplay::updateGameplay(isPaused);
+					Gameplay::updateGameplay(isPaused, isGameOver, score);
 				else
 					Pause::Update(isPaused);
 				break;

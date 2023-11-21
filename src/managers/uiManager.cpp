@@ -11,10 +11,8 @@ namespace LeFlappyBird
 {
 	namespace UiManager
 	{
-
-
-		static const float TITLE_FONT_SIZE = 50.0f;
-		static const float TITLE_SPACING = 3.0f;
+		static const float SCORE_FONT_SIZE = 50.0f;
+		static const float SCORE_SPACING = 3.0f;
 
 		void init() {};
 		void update() {};
@@ -22,7 +20,7 @@ namespace LeFlappyBird
 		void draw(int score)
 		{
 			string scoreText = "Score:" + to_string(score);
-			FontManager::drawText(scoreText.c_str(), { 10, 0 }, TITLE_FONT_SIZE, TITLE_SPACING, WHITE);
+			FontManager::drawText(scoreText.c_str(), { 10, 0 }, SCORE_FONT_SIZE, SCORE_SPACING, WHITE);
 		};
 	}
 }
