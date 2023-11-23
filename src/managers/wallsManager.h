@@ -4,7 +4,7 @@
 namespace LeFlappyBird {
 	namespace WallsManager {
 		void init();
-		void updateWalls(int& score);
+		void updateWalls(int& score, bool isPaused);
 		void draw();
 		bool isCollidingWithWall(Bird::Bird bird);
 	}

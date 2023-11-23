@@ -16,7 +16,7 @@ namespace LeFlappyBird {
 
 		void init() {
 			Timer::startTimer(&wallSpawnTimer, WALL_SPAWN_TIME);
-			
+
 			lastWallPosition = {
 				ScreenUtils::getScreenWidth(),
 				static_cast<float>(Wall::createRandomYStartValue(0, 0))
@@ -25,10 +25,16 @@ namespace LeFlappyBird {
 			walls = { Wall::createWall(lastWallPosition) };
 		};
 
-		void updateWalls(int& score) {
+		void updateWalls(int& score, bool isPaused) {
+
+			if (isPaused)
+				Timer::pauseTimer(&wallSpawnTimer);
+			else if (!isPaused && Timer::isPaused(wallSpawnTimer))
+				Timer::unPauseTimer(&wallSpawnTimer);
+
 			if (Timer::timerDone(wallSpawnTimer)) {
 				Vector2 nextWallPosition;
-				if(lastWallPosition.y > MathUtils::getHalf(ScreenUtils::getScreenHeight())) {
+				if (lastWallPosition.y > MathUtils::getHalf(ScreenUtils::getScreenHeight())) {
 					nextWallPosition = {
 						lastWallPosition.x,
 						static_cast<float>(
@@ -40,8 +46,9 @@ namespace LeFlappyBird {
 							)
 						)
 					};
-				} else {
-    				nextWallPosition = {
+				}
+				else {
+					nextWallPosition = {
 						lastWallPosition.x,
 						static_cast<float>(
 							Wall::createRandomYStartValue(
@@ -56,7 +63,7 @@ namespace LeFlappyBird {
 
 				walls.push_back(Wall::createWall(nextWallPosition));
 				lastWallPosition = nextWallPosition;
- 				Timer::startTimer(&wallSpawnTimer, WALL_SPAWN_TIME);
+				Timer::startTimer(&wallSpawnTimer, WALL_SPAWN_TIME);
 			}
 
 			for (size_t i = 0; i < walls.size(); i++) {

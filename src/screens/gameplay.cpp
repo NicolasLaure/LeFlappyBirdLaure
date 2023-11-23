@@ -95,8 +95,11 @@ namespace LeFlappyBird
 				isGameOver = false;
 			}
 
+			if (IsKeyPressed(KEY_ESCAPE) || IsMouseButtonPressed(MOUSE_BUTTON_MIDDLE))
+				isPaused = true;
+
 			Bird::updateBird(gameplayEntities.firstPlayerBird);
-			WallsManager::updateWalls(score);
+			WallsManager::updateWalls(score, isPaused);
 
 			if (Bird::isCollidingBottom(gameplayEntities.firstPlayerBird) || WallsManager::isCollidingWithWall(gameplayEntities.firstPlayerBird))
 			{
@@ -114,9 +117,6 @@ namespace LeFlappyBird
 					//restartEntities();
 				};
 			}
-
-			if (IsKeyPressed(KEY_ESCAPE) || IsMouseButtonPressed(MOUSE_BUTTON_MIDDLE))
-				isPaused = true;
 
 			BackgroundManager::updateBackground();
 			UiManager::update();
