@@ -13,8 +13,10 @@ namespace LeFlappyBird {
 		bool timerDone(Timer timer);
 		void pauseTimer(Timer* timer);
 		void unPauseTimer(Timer* timer);
-		double getElapsed(Timer timer);
+		double getTimePassed(Timer timer);
+		double getTimerCountDown(Timer timer);
 		bool isTimeLeftLessThan(Timer timer, double lifetimeLeft);
 		bool isMillisecondLessThan(Timer timer, double ms);
+		bool isPaused(Timer timer);
 	}
 }

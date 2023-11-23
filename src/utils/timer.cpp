@@ -29,9 +29,14 @@ namespace LeFlappyBird {
             timer->paused = false;
         }
 
-        double getElapsed(Timer timer)
+        double getTimePassed(Timer timer)
         {
             return GetTime() - timer.startTime;
+        }
+
+        double getTimerCountDown(Timer timer)
+        {
+            return timer.startTime - GetTime() + timer.lifeTime + 1;
         }
 
         bool isTimeLeftLessThan(Timer timer, double lifetimeLeft) {
@@ -44,6 +49,11 @@ namespace LeFlappyBird {
             fractional = modf(GetTime() - timer.startTime, &whole);
 
             return fractional * 1000.0 < ms;
+        }
+
+        bool isPaused(Timer timer)
+        {
+            return timer.paused; 
         }
     }
 }
