@@ -2,6 +2,7 @@
 
 #include "utils/screen.h"
 #include "utils/math.h"
+#include "assets/assetManager.h"
 
 namespace LeFlappyBird {
 	namespace Wall {
@@ -39,9 +40,16 @@ namespace LeFlappyBird {
 		}
 
 		void drawWall(Wall wall) {
-			DrawRectangleRec(getTopRectangle(wall), YELLOW);
+			/*DrawRectangleRec(getTopRectangle(wall), YELLOW);
 
-			DrawRectangleRec(getBottomRectangle(wall), YELLOW);
+			DrawRectangleRec(getBottomRectangle(wall), YELLOW);*/
+			Texture upperPipe = AssetManager::getTexture(AssetManager::Textures::UPPER_PIPE);
+			Rectangle upperSource = { 0,0, static_cast<float>(upperPipe.width), static_cast<float>(upperPipe.width) };
+			DrawTexturePro(upperPipe, upperSource , getTopRectangle(wall), { 0,0 }, 0, WHITE);
+
+			Texture lowerPipe = AssetManager::getTexture(AssetManager::Textures::LOWER_PIPE);
+			Rectangle lowerSource = { 0,0, static_cast<float>(upperPipe.width), static_cast<float>(upperPipe.width) };
+			DrawTexturePro(lowerPipe, lowerSource, getBottomRectangle(wall), { 0,0 }, 0, WHITE);
 		};
 
 		int createRandomYStartValue(int topMargin, int bottomMargin) {

@@ -27,6 +27,8 @@ namespace LeFlappyBird
 			AssetWithTexture flyingCheesecake = { Textures::CHEESECAKE_FLYING, LoadTexture("res/images/cheesecake-flying.png") };
 			AssetWithTexture lemonPie = { Textures::LEMONPIE, LoadTexture("res/images/lemonPie.png") };
 			AssetWithTexture flyingLemonPie = { Textures::LEMONPIE_FLYING, LoadTexture("res/images/lemonPie-flying.png") };
+			AssetWithTexture upperPipe = { Textures::UPPER_PIPE, LoadTexture("res/images/upperPipe.png") };
+			AssetWithTexture lowerPipe = { Textures::LOWER_PIPE, LoadTexture("res/images/lowerPipe.png") };
 			AssetWithTexture credits = { Textures::CREDITS, LoadTexture("res/images/credits.png") };
 			AssetWithTexture rulesPageChange = { Textures::RULES_CHANGE_PAGE, LoadTexture("res/images/changePageButton.png") };
 			AssetWithTexture rulesPageOne = { Textures::RULES_PAGE_ONE, LoadTexture("res/images/rulesPage1.png") };
@@ -44,6 +46,8 @@ namespace LeFlappyBird
 				flyingCheesecake,
 				lemonPie,
 				flyingLemonPie,
+				upperPipe,
+				lowerPipe,
 				credits,
 				rulesPageChange,
 				rulesPageOne,
