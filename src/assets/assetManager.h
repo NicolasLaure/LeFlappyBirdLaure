@@ -4,7 +4,7 @@
 
 namespace LeFlappyBird {
 	namespace AssetManager {
-		enum Assets
+		enum Textures
 		{
 			PARALLAX_BACKGROUND,
 			PARALLAX_BACKGROUND_TREES,
@@ -21,10 +21,16 @@ namespace LeFlappyBird {
 			GAME_OVER_PANEL,
 			CONTINUE_BUTTON,
 			MAIN_MENU_BUTTON,
-			ASSETS_COUNT
+			TEXTURES_COUNT
 		};
 
+		enum Sounds
+		{
+			JUMP,
+			SOUNDS_COUNT
+		};
 		void init();
-		Texture2D getTexture(Assets asset);
+		void unload();
+		Texture2D getTexture(Textures asset);
 	}
 }

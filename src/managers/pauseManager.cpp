@@ -52,11 +52,11 @@ namespace LeFlappyBird
 			for (int i = 0; i < Option::OPTIONS_QUANTITY; i++)
 			{
 				if (i == 0)
-					pauseOptions[i] = { CONTINUE, AssetManager::getTexture(AssetManager::Assets::CONTINUE_BUTTON), Buttons::createButton(pauseButtonRect) };
+					pauseOptions[i] = { CONTINUE, AssetManager::getTexture(AssetManager::Textures::CONTINUE_BUTTON), Buttons::createButton(pauseButtonRect) };
 				else
 				{
 					pauseButtonRect.x = ScreenUtils::getScreenWidth() / 2 + buttonSpacing;
-					pauseOptions[i] = { MENU, AssetManager::getTexture(AssetManager::Assets::MAIN_MENU_BUTTON), Buttons::createButton(pauseButtonRect) };
+					pauseOptions[i] = { MENU, AssetManager::getTexture(AssetManager::Textures::MAIN_MENU_BUTTON), Buttons::createButton(pauseButtonRect) };
 				}
 			}
 		}
@@ -76,10 +76,10 @@ namespace LeFlappyBird
 			if (!isResuming)
 			{
 
-				Texture pausePanel = AssetManager::getTexture(AssetManager::Assets::PAUSE_PANEL);
+				Texture pausePanel = AssetManager::getTexture(AssetManager::Textures::PAUSE_PANEL);
 				if (isGameOver)
 				{
-					pausePanel = AssetManager::getTexture(AssetManager::Assets::GAME_OVER_PANEL);
+					pausePanel = AssetManager::getTexture(AssetManager::Textures::GAME_OVER_PANEL);
 				}
 
 				Rectangle source = {
