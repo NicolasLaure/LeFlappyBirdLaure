@@ -45,10 +45,12 @@ namespace LeFlappyBird
 		static Timer::Timer resumeTimer;
 		static const double resumeDuration = 3;
 
+		static const int verticalAssetsDisplacement = 80;
+
 		void init()
 		{
 			int buttonSpacing = 50;
-			Rectangle pauseButtonRect = { ScreenUtils::getScreenWidth() / 2 - (BUTTON_SIZE + buttonSpacing),ScreenUtils::getScreenHeight() / 2 - BUTTON_SIZE / 2,120,120 };
+			Rectangle pauseButtonRect = { ScreenUtils::getScreenWidth() / 2 - (BUTTON_SIZE + buttonSpacing),ScreenUtils::getScreenHeight() / 2 - BUTTON_SIZE / 2 + verticalAssetsDisplacement,120,120 };
 			for (int i = 0; i < Option::OPTIONS_QUANTITY; i++)
 			{
 				if (i == 0)
@@ -106,7 +108,7 @@ namespace LeFlappyBird
 					string scoreString = "Your Score was:" + to_string(score);
 					float posX = ScreenUtils::getScreenWidth() / 2 - FontManager::measureText(scoreString.c_str(), SCORE_FONT_SIZE, SCORE_SPACING).x / 2;
 					static const int ScoreUpperDisplacement = 120;
-					float posY = ScreenUtils::getScreenHeight() / 2 - ScoreUpperDisplacement;
+					float posY = ScreenUtils::getScreenHeight() / 2 - ScoreUpperDisplacement + verticalAssetsDisplacement / 2;
 					FontManager::drawText(scoreString.c_str(), { posX, posY }, SCORE_FONT_SIZE, SCORE_SPACING, WHITE);
 				}
 			}
