@@ -40,14 +40,17 @@ namespace LeFlappyBird
 			};
 		}
 
-		void updateWall(Wall& wall, Vector2 birdPosition, int& score)
+		void updateWall(Wall& wall, Vector2 birdPosition, int& score, float& speedMultiplier, float& spawnTime)
 		{
-			wall.position.x -= WALL_VELOCITY * GetFrameTime();
+			wall.position.x -= WALL_VELOCITY * speedMultiplier * GetFrameTime();
 
 			if (wall.position.x + wall.size.x < birdPosition.x && !wall.wasPassed)
 			{
 				score++;
 				wall.wasPassed = true;
+				const float TIME_AND_SPEED_VARIATION = 1.15f;
+				speedMultiplier = MathUtils::clamp(speedMultiplier * TIME_AND_SPEED_VARIATION, 1, 3);
+				spawnTime = MathUtils::clamp(spawnTime / TIME_AND_SPEED_VARIATION, 1, 2);
 			}
 		}
 

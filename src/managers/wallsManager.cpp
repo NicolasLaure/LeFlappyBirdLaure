@@ -8,7 +8,7 @@
 
 namespace LeFlappyBird {
 	namespace WallsManager {
-		static const double WALL_SPAWN_TIME = 2.0;
+		static float wallSpawnTime = 2.0f;
 		static Vector2 lastWallPosition;
 
 		Timer::Timer wallSpawnTimer;
@@ -16,7 +16,8 @@ namespace LeFlappyBird {
 		std::vector<Wall::Wall> walls;
 
 		void init() {
-			Timer::startTimer(&wallSpawnTimer, WALL_SPAWN_TIME);
+			wallSpawnTime = 2.0f;
+			Timer::startTimer(&wallSpawnTimer, wallSpawnTime);
 
 			lastWallPosition = {
 				ScreenUtils::getScreenWidth(),
@@ -26,7 +27,7 @@ namespace LeFlappyBird {
 			walls = { Wall::createWall(lastWallPosition) };
 		};
 
-		void updateWalls(int& score, Vector2 birdPosition, bool isPaused) {
+		void updateWalls(int& score, Vector2 birdPosition, bool isPaused, float& speedMultiplier) {
 
 			if (isPaused)
 				Timer::pauseTimer(&wallSpawnTimer);
@@ -64,7 +65,7 @@ namespace LeFlappyBird {
 
 				walls.push_back(Wall::createWall(nextWallPosition));
 				lastWallPosition = nextWallPosition;
-				Timer::startTimer(&wallSpawnTimer, WALL_SPAWN_TIME);
+				Timer::startTimer(&wallSpawnTimer, wallSpawnTime);
 			}
 
 			for (size_t i = 0; i < walls.size(); i++) {
@@ -72,7 +73,7 @@ namespace LeFlappyBird {
 					walls.erase(walls.begin() + i);
 				}
 				else {
-					Wall::updateWall(walls[i], birdPosition, score);
+					Wall::updateWall(walls[i], birdPosition, score, speedMultiplier, wallSpawnTime);
 				}
 			}
 		};

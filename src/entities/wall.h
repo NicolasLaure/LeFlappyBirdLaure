@@ -16,7 +16,7 @@ namespace LeFlappyBird
 		};
 
 		Wall createWall(Vector2 position);
-		void updateWall(Wall& wall, Vector2 birdPosition, int& score);
+		void updateWall(Wall& wall, Vector2 birdPosition, int& score, float& speedMultiplier, float& spawnTime);
 		void drawWall(Wall wall);
 		int createRandomYStartValue(int topMargin, int bottomMargin);
 		bool isDisappearing(Wall wall);

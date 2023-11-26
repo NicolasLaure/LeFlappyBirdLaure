@@ -28,6 +28,7 @@ namespace LeFlappyBird
 
 		static GameplayEntities gameplayEntities;
 
+		static float gameSpeedMultiplier;
 		void gameOver(bool& isPaused, bool& isGameOver);
 
 		static void initManagers()
@@ -74,6 +75,7 @@ namespace LeFlappyBird
 
 			WallsManager::init();
 
+			gameSpeedMultiplier = 1;
 			score = 0;
 		}
 
@@ -88,6 +90,8 @@ namespace LeFlappyBird
 			initManagers();
 
 			PlayMusicStream(AssetManager::getMusic(AssetManager::Musics::GAMEPLAY_MUSIC));
+
+			gameSpeedMultiplier = 1;
 		}
 
 		void updateGameplay(bool& isPaused, bool& isGameOver, int& score)
@@ -102,7 +106,7 @@ namespace LeFlappyBird
 				isPaused = true;
 
 			Bird::updateBird(gameplayEntities.firstPlayerBird);
-			WallsManager::updateWalls(score, gameplayEntities.firstPlayerBird.position, isPaused);
+			WallsManager::updateWalls(score, gameplayEntities.firstPlayerBird.position, isPaused, gameSpeedMultiplier);
 
 			if (Bird::isCollidingBottom(gameplayEntities.firstPlayerBird) || WallsManager::isCollidingWithWall(gameplayEntities.firstPlayerBird))
 			{
