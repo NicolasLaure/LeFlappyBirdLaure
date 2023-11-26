@@ -11,6 +11,7 @@ namespace LeFlappyBird {
 	namespace Game {
 		static void close() {
 			AssetManager::unload();
+			FontManager::unload();
 			CloseAudioDevice();
 			CloseWindow();
 		}
