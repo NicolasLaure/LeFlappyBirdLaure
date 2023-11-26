@@ -75,8 +75,8 @@ namespace LeFlappyBird
 
 		bool collidesWith(Wall wall, Bird::Bird bird)
 		{
-			return MathUtils::checkRectangleCollision(
-				Bird::getRectangle(bird),
+			return CheckCollisionCircleRec(
+				Bird::getBirdCircle(bird).position, Bird::getBirdCircle(bird).radius,
 				getTopRectangle(wall)
 			) || MathUtils::checkRectangleCollision(
 				Bird::getRectangle(bird),

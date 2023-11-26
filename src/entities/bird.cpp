@@ -2,31 +2,35 @@
 
 #include "assets/assetManager.h"
 #include "utils/screen.h"
-#include "utils/math.h"
 #include "utils/timer.h"
 #include "raymath.h"
 
 #include <iostream>
 
-namespace LeFlappyBird {
-	namespace Bird {
+namespace LeFlappyBird
+{
+	namespace Bird
+	{
 		static const float BIRD_VELOCITY_UP = -400.0f;
 		static const float BIRD_ACCELERATION = 1000.0f;
 		static const Vector2 BIRD_SIZE = { 64.0f, 64.0f };
-		static const Vector2 BIRD_COLLISSION_SIZE = { 50.0f, 50.0f };
-		
+		static const Vector2 BIRD_COLLISSION_SIZE = { 40.0f, 40.0f };
+		static const float BIRD_COLLISION_DIAMETER = 40.0f;
 		static Timer::Timer flyingTimer;
 		static const double FLYING_TIMER_LIFETIME = 0.3;
 
-		static float getVelocityPercentage(float velocity) {
+		static float getVelocityPercentage(float velocity)
+		{
 			return velocity / -BIRD_VELOCITY_UP;
 		}
 
-		static bool isBirdInNonFlySpace(Bird bird) {
+		static bool isBirdInNonFlySpace(Bird bird)
+		{
 			return bird.position.y + MathUtils::getHalf(bird.size.y) < 0;
 		}
 
-		static void checkBirdScreenCollisions(Bird& bird) {
+		static void checkBirdScreenCollisions(Bird& bird)
+		{
 			ScreenUtils::Entity birdEntity = { bird.position, bird.velocity, bird.size };
 			ScreenUtils::checkPositionByScreenBounds(birdEntity, {
 					0,
@@ -39,19 +43,23 @@ namespace LeFlappyBird {
 			bird.position = birdEntity.position;
 		}
 
-		Bird createBird(Vector2 position, bool isPlayerOne) {
+		Bird createBird(Vector2 position, bool isPlayerOne)
+		{
 			Timer::startTimer(&flyingTimer, 0.0);
 
 			return {
 				position,
 				{ 0, 0 },
 				BIRD_SIZE,
+				BIRD_COLLISION_DIAMETER / 2,
 				isPlayerOne
 			};
 		};
 
-		void updateBird(Bird& bird) {
-			if (bird.isPlayerOne && IsKeyPressed(bird.goUpbutton) && !isBirdInNonFlySpace(bird)) {
+		void updateBird(Bird& bird)
+		{
+			if (bird.isPlayerOne && IsKeyPressed(bird.goUpbutton) && !isBirdInNonFlySpace(bird))
+			{
 				Timer::startTimer(&flyingTimer, FLYING_TIMER_LIFETIME);
 				bird.velocity.y = BIRD_VELOCITY_UP;
 			}
@@ -70,18 +78,15 @@ namespace LeFlappyBird {
 			checkBirdScreenCollisions(bird);
 		};
 
-		void drawBird(Bird bird) {
+		void drawBird(Bird bird)
+		{
 #ifdef _DEBUG
-			DrawRectangleRec({
-				bird.position.x + MathUtils::getHalf((BIRD_SIZE.x - BIRD_COLLISSION_SIZE.x)),
-				bird.position.y + MathUtils::getHalf((BIRD_SIZE.y - BIRD_COLLISSION_SIZE.y)),
-				BIRD_COLLISSION_SIZE.x,
-				BIRD_COLLISSION_SIZE.y
-			}, RED);
+			MathUtils::Circle circleCollider = getBirdCircle(bird);
+			DrawCircleLines(static_cast<int>(circleCollider.position.x), static_cast<int>(circleCollider.position.y), circleCollider.radius, GREEN);
 #endif
 			Texture2D birdTexture;
-			
-			if(bird.isPlayerOne)
+
+			if (bird.isPlayerOne)
 				birdTexture = AssetManager::getTexture(!Timer::timerDone(flyingTimer) ? AssetManager::CHEESECAKE_FLYING : AssetManager::CHEESECAKE);
 			else
 				birdTexture = AssetManager::getTexture(!Timer::timerDone(flyingTimer) ? AssetManager::LEMONPIE_FLYING : AssetManager::LEMONPIE);
@@ -100,7 +105,7 @@ namespace LeFlappyBird {
 				bird.size.y
 			};
 
-			Vector2 origin = { 
+			Vector2 origin = {
 				MathUtils::getHalf(static_cast<float>(birdTexture.width)),
 				MathUtils::getHalf(static_cast<float>(birdTexture.height))
 			};
@@ -115,7 +120,8 @@ namespace LeFlappyBird {
 			);
 		};
 
-		Rectangle getRectangle(Bird bird) {
+		Rectangle getRectangle(Bird bird)
+		{
 			return {
 				bird.position.x + MathUtils::getHalf((BIRD_SIZE.x - BIRD_COLLISSION_SIZE.x)),
 				bird.position.y + MathUtils::getHalf((BIRD_SIZE.y - BIRD_COLLISSION_SIZE.y)),
@@ -124,7 +130,16 @@ namespace LeFlappyBird {
 			};
 		}
 
-		bool isCollidingBottom(Bird bird) {
+		MathUtils::Circle getBirdCircle(Bird bird)
+		{
+			return{
+				{bird.position.x + MathUtils::getHalf((BIRD_SIZE.x)), bird.position.y + MathUtils::getHalf((BIRD_SIZE.y)) },
+				bird.radius
+			};
+		}
+
+		bool isCollidingBottom(Bird bird)
+		{
 			ScreenUtils::Entity birdEntity = { bird.position, bird.velocity, { 0.0f, 0.0f } };
 
 			return ScreenUtils::isCollidingInScreenPart(birdEntity, ScreenUtils::BOTTOM);

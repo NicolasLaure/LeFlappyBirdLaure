@@ -2,14 +2,17 @@
 
 #include <math.h>
 
-namespace LeFlappyBird {
-	namespace MathUtils	{
+namespace LeFlappyBird
+{
+	namespace MathUtils
+	{
 		float clamp(float value, float min, float max)
 		{
 			return (value < min) ? min : value > max ? max : value;
 		}
 
-		float moduleOf(float value) {
+		float moduleOf(float value)
+		{
 			return value < 0 ? -value : value;
 		}
 
@@ -25,7 +28,8 @@ namespace LeFlappyBird {
 			return numToRound + multiple - remainder;
 		}
 
-		bool checkRectangleCollision(Rectangle rectangle1, Rectangle rectangle2) {
+		bool checkRectangleCollision(Rectangle rectangle1, Rectangle rectangle2)
+		{
 			float rectangle1LeftEdge = rectangle1.x;
 			float rectangle1RightEdge = rectangle1.x + rectangle1.width;
 
@@ -44,7 +48,8 @@ namespace LeFlappyBird {
 				rectangle1TopEdge <= rectangle2BottomEdge;
 		};
 
-		bool checkCircleCollision(Circle circle1, Circle circle2) {
+		bool checkCircleCollision(Circle circle1, Circle circle2)
+		{
 			double distX = static_cast<double>(circle1.position.x) - circle2.position.x;
 			double distY = static_cast<double>(circle1.position.y) - circle2.position.y;
 
@@ -53,7 +58,8 @@ namespace LeFlappyBird {
 			return distance <= circle1.radius + circle2.radius;
 		}
 
-		bool checkPointToRectangleCollision(Rectangle rectangle, Vector2 point) {
+		bool checkPointToRectangleCollision(Rectangle rectangle, Vector2 point)
+		{
 			float rectangleLeftEdge = rectangle.x;
 			float rectangleRightEdge = rectangle.x + rectangle.width;
 			float rectangleBottomEdge = rectangle.y + rectangle.height;
@@ -65,21 +71,25 @@ namespace LeFlappyBird {
 				point.y >= rectangleTopEdge;
 		}
 
-		float getHalf(float size) {
+		float getHalf(float size)
+		{
 			return size / 2.0f;
 		}
 
-		float getWithFrameTime(float value) {
+		float getWithFrameTime(float value)
+		{
 			return value * GetFrameTime();
 		}
 
-		float getDistanceFromMiddle(Rectangle rectangle, Vector2 point) {
+		float getDistanceFromMiddle(Rectangle rectangle, Vector2 point)
+		{
 			float middle = rectangle.y + (rectangle.height / 2);
 
 			return point.y - middle;
 		}
 
-		float getRandomNegativeOrPositive() {
+		float getRandomNegativeOrPositive()
+		{
 			return GetRandomValue(0, 1) == 0 ? -1.0f : 1.0f;
 		}
 	}
