@@ -40,9 +40,15 @@ namespace LeFlappyBird
 			};
 		}
 
-		void updateWall(Wall& wall)
+		void updateWall(Wall& wall, Vector2 birdPosition, int& score)
 		{
 			wall.position.x -= WALL_VELOCITY * GetFrameTime();
+
+			if (wall.position.x + wall.size.x < birdPosition.x && !wall.wasPassed)
+			{
+				score++;
+				wall.wasPassed = true;
+			}
 		}
 
 		void drawWall(Wall wall)

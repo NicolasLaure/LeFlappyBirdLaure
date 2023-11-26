@@ -99,7 +99,7 @@ namespace LeFlappyBird
 				isPaused = true;
 
 			Bird::updateBird(gameplayEntities.firstPlayerBird);
-			WallsManager::updateWalls(score, isPaused);
+			WallsManager::updateWalls(score, gameplayEntities.firstPlayerBird.position, isPaused);
 
 			if (Bird::isCollidingBottom(gameplayEntities.firstPlayerBird) || WallsManager::isCollidingWithWall(gameplayEntities.firstPlayerBird))
 			{

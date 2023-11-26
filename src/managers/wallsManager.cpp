@@ -25,7 +25,7 @@ namespace LeFlappyBird {
 			walls = { Wall::createWall(lastWallPosition) };
 		};
 
-		void updateWalls(int& score, bool isPaused) {
+		void updateWalls(int& score, Vector2 birdPosition, bool isPaused) {
 
 			if (isPaused)
 				Timer::pauseTimer(&wallSpawnTimer);
@@ -68,11 +68,10 @@ namespace LeFlappyBird {
 
 			for (size_t i = 0; i < walls.size(); i++) {
 				if (Wall::isDisappearing(walls[i])) {
-					score++;
 					walls.erase(walls.begin() + i);
 				}
 				else {
-					Wall::updateWall(walls[i]);
+					Wall::updateWall(walls[i], birdPosition, score);
 				}
 			}
 		};
