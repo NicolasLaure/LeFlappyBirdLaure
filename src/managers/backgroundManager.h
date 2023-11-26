@@ -2,7 +2,7 @@
 namespace LeFlappyBird {
 	namespace BackgroundManager {
 		void initBackground();
-		void updateBackground();
+		void updateBackground(float speedMultiplier);
 		void drawBackground();
 	}
 }

@@ -125,7 +125,7 @@ namespace LeFlappyBird
 				};
 			}
 
-			BackgroundManager::updateBackground();
+			BackgroundManager::updateBackground(gameSpeedMultiplier);
 			UiManager::update();
 
 			UpdateMusicStream(AssetManager::getMusic(AssetManager::Musics::GAMEPLAY_MUSIC));

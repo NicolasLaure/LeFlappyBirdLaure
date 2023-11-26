@@ -5,16 +5,20 @@
 #include "assets/assetManager.h"
 #include "utils/screen.h"
 
-namespace LeFlappyBird {
-	namespace BackgroundManager {
-		struct BackgroundAsset {
+namespace LeFlappyBird
+{
+	namespace BackgroundManager
+	{
+		struct BackgroundAsset
+		{
 			Texture2D backgroundTexture;
 			float parallaxVelocity;
 			float scroll;
 			float scale;
 		};
 
-		struct Background {
+		struct Background
+		{
 			BackgroundAsset background;
 			BackgroundAsset midground;
 			BackgroundAsset foreground;
@@ -22,15 +26,18 @@ namespace LeFlappyBird {
 
 		static Background background;
 
-		static void updateBackgroundAsset(BackgroundAsset &backgroundAsset) {
-			backgroundAsset.scroll += backgroundAsset.parallaxVelocity * GetFrameTime();
+		static void updateBackgroundAsset(BackgroundAsset& backgroundAsset, float speedMultiplier)
+		{
+			backgroundAsset.scroll += backgroundAsset.parallaxVelocity * speedMultiplier * GetFrameTime();
 
-			if (backgroundAsset.scroll >= backgroundAsset.backgroundTexture.width * 2.0f) {
+			if (backgroundAsset.scroll >= backgroundAsset.backgroundTexture.width * 2.0f)
+			{
 				backgroundAsset.scroll = 0.0f;
 			}
 		}
 
-		static void drawBackgroundAsset(BackgroundAsset backgroundAsset) {
+		static void drawBackgroundAsset(BackgroundAsset backgroundAsset)
+		{
 			Rectangle source = {
 				backgroundAsset.scroll,
 				0.0f,
@@ -57,7 +64,8 @@ namespace LeFlappyBird {
 			);
 		}
 
-		void initBackground() {
+		void initBackground()
+		{
 			const float MOUNTAINS_SCROLL_VELOCITY = 10.0f;
 			const float TREES_SCROLL_VELOCITY = 20.0f;
 			const float SCROLLED_TEXTURES_SCALE = 2.0f;
@@ -84,13 +92,15 @@ namespace LeFlappyBird {
 			};
 		};
 
-		void updateBackground() {
-			updateBackgroundAsset(background.background);
-			updateBackgroundAsset(background.foreground);
-			updateBackgroundAsset(background.midground);
+		void updateBackground(float speedMultiplier)
+		{
+			updateBackgroundAsset(background.background, speedMultiplier);
+			updateBackgroundAsset(background.foreground, speedMultiplier);
+			updateBackgroundAsset(background.midground, speedMultiplier);
 		};
 
-		void drawBackground() {
+		void drawBackground()
+		{
 			drawBackgroundAsset(background.background);
 			drawBackgroundAsset(background.midground);
 			drawBackgroundAsset(background.foreground);
