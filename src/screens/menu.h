@@ -23,6 +23,7 @@ namespace LeFlappyBird {
 		};
 
 		void initMenu();
+		void update(bool& shouldClose);
 		void drawMenu();
 		void checkMenuInputAndCollision(bool& shouldClose);
 	}

@@ -7,6 +7,7 @@
 #include "managers/wallsManager.h"
 #include "utils/screen.h"
 #include "utils/math.h"
+#include "assets/assetManager.h"
 
 namespace LeFlappyBird
 {
@@ -85,6 +86,8 @@ namespace LeFlappyBird
 			Gameplay::isMultiPlayer = isMultiplayer;
 			initEntities();
 			initManagers();
+
+			PlayMusicStream(AssetManager::getMusic(AssetManager::Musics::GAMEPLAY_MUSIC));
 		}
 
 		void updateGameplay(bool& isPaused, bool& isGameOver, int& score)
@@ -120,6 +123,8 @@ namespace LeFlappyBird
 
 			BackgroundManager::updateBackground();
 			UiManager::update();
+
+			UpdateMusicStream(AssetManager::getMusic(AssetManager::Musics::GAMEPLAY_MUSIC));
 		}
 
 		void drawGameplay(int score)

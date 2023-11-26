@@ -6,8 +6,10 @@
 #include "assets/assetManager.h"
 #include "assets/fontManager.h"
 
-namespace LeFlappyBird {
-	namespace Menu {
+namespace LeFlappyBird
+{
+	namespace Menu
+	{
 		static const float OPTION_RECTANGLE_WIDTH = 300.0f;
 		static const float OPTION_RECTANGLE_HEIGHT = 40.0f;
 
@@ -19,12 +21,15 @@ namespace LeFlappyBird {
 
 		static MenuOption menuOptions[Option::OPTIONS_QUANTITY];
 
-		static void drawOptionBox(MenuOption option) {
+		static void drawOptionBox(MenuOption option)
+		{
 			Buttons::drawButton(option.optionButton);
 		}
 
-		static std::string optionToText(Option option) {
-			switch (option) {
+		static std::string optionToText(Option option)
+		{
+			switch (option)
+			{
 			case Option::SINGLEPLAYER:
 				return "Single Player";
 			case Option::MULTIPLAYER:
@@ -40,8 +45,10 @@ namespace LeFlappyBird {
 			}
 		}
 
-		static void actionPerMenuOption(Option option, bool& shouldClose) {
-			switch (option) {
+		static void actionPerMenuOption(Option option, bool& shouldClose)
+		{
+			switch (option)
+			{
 			case Option::SINGLEPLAYER:
 				ScreensManager::changeScreenTo(ScreensManager::Screens::GAMEPLAY);
 				break;
@@ -60,8 +67,10 @@ namespace LeFlappyBird {
 			}
 		}
 
-		void initMenu() {
-			for (int i = 0; i < Option::OPTIONS_QUANTITY; i++) {
+		void initMenu()
+		{
+			for (int i = 0; i < Option::OPTIONS_QUANTITY; i++)
+			{
 				float yPosition = TOP_MARGIN + (OPTION_RECTANGLE_MARGIN + OPTION_RECTANGLE_HEIGHT) * i;
 				float screenWidth = ScreenUtils::getScreenWidth();
 
@@ -78,9 +87,16 @@ namespace LeFlappyBird {
 					Buttons::createButton(optionRectangle)
 				};
 			}
+			PlayMusicStream(AssetManager::getMusic(AssetManager::Musics::MENU_MUSIC));
 		}
 
-		void drawMenu() {
+		void update(bool& shouldClose)
+		{
+			UpdateMusicStream(AssetManager::getMusic(AssetManager::Musics::MENU_MUSIC));
+			checkMenuInputAndCollision(shouldClose);
+		}
+		void drawMenu()
+		{
 			const char* title = "LeFlappyBird";
 			Vector2 titleSize = FontManager::measureText(title, TITLE_FONT_SIZE, TITLE_SPACING);
 			float screenWidth = ScreenUtils::getScreenWidth();
@@ -89,7 +105,8 @@ namespace LeFlappyBird {
 			FontManager::drawText(
 				title, { asteroidsTitlePosX, TITLE_TOP_MARGIN }, TITLE_FONT_SIZE, TITLE_SPACING, WHITE);
 
-			for (int i = 0; i < Option::OPTIONS_QUANTITY; i++) {
+			for (int i = 0; i < Option::OPTIONS_QUANTITY; i++)
+			{
 				drawOptionBox(menuOptions[i]);
 				Buttons::drawCenteredTextInButton(menuOptions[i].optionButton, menuOptions[i].text.c_str());
 			}
@@ -97,11 +114,14 @@ namespace LeFlappyBird {
 			FontManager::drawText("0.3", { 10, 0 }, TITLE_FONT_SIZE, TITLE_SPACING, WHITE);
 		}
 
-		void checkMenuInputAndCollision(bool& shouldClose) {
-			for (int i = 0; i < Option::OPTIONS_QUANTITY; i++) {
+		void checkMenuInputAndCollision(bool& shouldClose)
+		{
+			for (int i = 0; i < Option::OPTIONS_QUANTITY; i++)
+			{
 				Buttons::updateButton(menuOptions[i].optionButton);
 
-				if (menuOptions[i].optionButton.isClicked) {
+				if (menuOptions[i].optionButton.isClicked)
+				{
 					actionPerMenuOption(menuOptions[i].option, shouldClose);
 				}
 			};

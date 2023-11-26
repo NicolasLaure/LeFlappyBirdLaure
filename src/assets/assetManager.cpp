@@ -15,8 +15,16 @@ namespace LeFlappyBird
 			Sounds asset;
 			Sound sound;
 		};
+
+		struct AssetWithMusic
+		{
+			Musics asset;
+			Music music;
+		};
+
 		static AssetWithTexture textures[TEXTURES_COUNT];
 		static AssetWithSound sounds[SOUNDS_COUNT];
+		static AssetWithMusic musics[MUSICS_COUNT];
 
 		void init()
 		{
@@ -63,7 +71,41 @@ namespace LeFlappyBird
 				textures[i] = auxTextures[i];
 			}
 
-			AssetWithSound jump = { Sounds::JUMP, LoadSound("res/images/parallax-mountain-trees.png") };
+			AssetWithSound playerOneJump = { Sounds::PLAYER_ONE_JUMP, LoadSound("res/audio/sfx/drop_001.ogg") };
+			AssetWithSound playerTwoJump = { Sounds::PLAYER_TWO_JUMP, LoadSound("res/audio/sfx/footstep_concrete_002.ogg") };
+			AssetWithSound wallHit = { Sounds::WALL_HIT, LoadSound("res/audio/sfx/impactBell_heavy_004.ogg") };
+			AssetWithSound groundHit = { Sounds::GROUND_HIT, LoadSound("res/audio/sfx/footstep_grass_003.ogg") };
+			AssetWithSound buttonClickPressed = { Sounds::BUTTON_PRESSED, LoadSound("res/audio/ui/click_001.ogg") };
+			AssetWithSound buttonClickReleased = { Sounds::BUTTON_RELEASED, LoadSound("res/audio/ui/click_003.ogg") };
+
+			AssetWithSound auxSounds[SOUNDS_COUNT] = {
+				playerOneJump,
+				playerTwoJump,
+				wallHit,
+				groundHit,
+				buttonClickPressed,
+				buttonClickReleased
+			};
+
+			for (int i = 0; i < SOUNDS_COUNT; i++)
+			{
+				sounds[i] = auxSounds[i];
+				SetSoundVolume(sounds[i].sound, 0.3f);
+			}
+
+			AssetWithMusic menuMusic = { Musics::MENU_MUSIC, LoadMusicStream("res/audio/music/LeFlappyBirdMenu.wav") };
+			AssetWithMusic gameplayMusic = { Musics::GAMEPLAY_MUSIC, LoadMusicStream("res/audio/music/LeFlappyBirdGamePlay.wav") };
+
+			AssetWithMusic auxMusics[MUSICS_COUNT] = {
+				menuMusic,
+				gameplayMusic
+			};
+
+			for (int i = 0; i < MUSICS_COUNT; i++)
+			{
+				musics[i] = auxMusics[i];
+				SetMusicVolume(musics[i].music, 0.2f);
+			}
 		}
 
 		void unload()
@@ -75,6 +117,11 @@ namespace LeFlappyBird
 			for (int i = 0; i < SOUNDS_COUNT; i++)
 			{
 				UnloadSound(sounds[i].sound);
+			}
+
+			for (int i = 0; i < MUSICS_COUNT; i++)
+			{
+				UnloadMusicStream(musics[i].music);
 			}
 		}
 
@@ -89,5 +136,30 @@ namespace LeFlappyBird
 			}
 			return {};
 		}
+
+		Sound getSound(Sounds asset)
+		{
+			for (int i = 0; i < SOUNDS_COUNT; i++)
+			{
+				if (asset == sounds[i].asset)
+				{
+					return sounds[i].sound;
+				}
+			}
+			return {};
+		}
+
+		Music getMusic(Musics asset)
+		{
+			for (int i = 0; i < MUSICS_COUNT; i++)
+			{
+				if (asset == musics[i].asset)
+				{
+					return musics[i].music;
+				}
+			}
+			return {};
+		}
+
 	}
 }

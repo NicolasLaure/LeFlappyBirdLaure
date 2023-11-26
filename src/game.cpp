@@ -17,12 +17,11 @@ namespace LeFlappyBird {
 
 		static void init() {
 			InitWindow(static_cast<int>(Dimensions::SCREEN_DIMENSIONS.x), static_cast<int>(Dimensions::SCREEN_DIMENSIONS.y), "LeFlappyBird");
+			InitAudioDevice();
 
 			AssetManager::init();
 			ScreensManager::initManager();
 			FontManager::init();
-
-			InitAudioDevice();
 		}
 
 		static void update(bool& shouldClose) {

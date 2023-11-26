@@ -73,7 +73,7 @@ namespace LeFlappyBird {
 		void updateScreen(bool& shouldClose) {
 			switch (actualScreen) {
 			case Screens::MENU:
-				Menu::checkMenuInputAndCollision(shouldClose);
+				Menu::update(shouldClose);
 				break;
 			case Screens::CREDITS:
 				Credits::checkCreditsInputAndCollision();

@@ -53,9 +53,6 @@ namespace LeFlappyBird
 
 		void drawWall(Wall wall)
 		{
-			/*DrawRectangleRec(getTopRectangle(wall), YELLOW);
-
-			DrawRectangleRec(getBottomRectangle(wall), YELLOW);*/
 			Texture upperPipe = AssetManager::getTexture(AssetManager::Textures::UPPER_PIPE);
 			Rectangle upperSource = { 0,0, static_cast<float>(upperPipe.width), static_cast<float>(upperPipe.height) };
 			DrawTexturePro(upperPipe, upperSource, getTopRectangle(wall), { 0,0 }, 0, WHITE);

@@ -4,6 +4,7 @@
 #include "entities/wall.h"
 #include "utils/screen.h"
 #include "utils/math.h"
+#include "assets/assetManager.h"
 
 namespace LeFlappyBird {
 	namespace WallsManager {
@@ -85,6 +86,7 @@ namespace LeFlappyBird {
 		bool isCollidingWithWall(Bird::Bird bird) {
 			for (size_t i = 0; i < walls.size(); i++) {
 				if (Wall::collidesWith(walls[i], bird)) {
+					PlaySound(AssetManager::getSound(AssetManager::Sounds::WALL_HIT));
 					return true;
 				}
 			}

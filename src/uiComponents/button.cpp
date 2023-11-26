@@ -7,6 +7,7 @@
 #include "constants/dimensions.h"
 #include "constants/colors.h"
 #include "assets/fontManager.h"
+#include "assets/assetManager.h"
 
 namespace LeFlappyBird
 {
@@ -77,14 +78,21 @@ namespace LeFlappyBird
 			bool isClicking = IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
 			bool isJustReleased = IsMouseButtonReleased(MOUSE_BUTTON_LEFT);
 
+
+
 			if (isMouseCollisioningWithButton && IsMouseButtonDown(MOUSE_BUTTON_LEFT) && !isClicking) return;
 
 			if (isMouseCollisioningWithButton)
 			{
 
+				if (isClicking && !IsSoundPlaying(AssetManager::getSound(AssetManager::Sounds::BUTTON_PRESSED)))
+					PlaySound(AssetManager::getSound(AssetManager::Sounds::BUTTON_PRESSED));
+
 				if (isJustReleased && button.isHovered)
 				{
 					button.isClicked = true;
+					if (!IsSoundPlaying(AssetManager::getSound(AssetManager::Sounds::BUTTON_RELEASED)))
+						PlaySound(AssetManager::getSound(AssetManager::Sounds::BUTTON_RELEASED));
 				}
 				else if (!isJustReleased)
 					button.isClicked = false;

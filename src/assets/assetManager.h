@@ -28,11 +28,26 @@ namespace LeFlappyBird {
 
 		enum Sounds
 		{
-			JUMP,
+			PLAYER_ONE_JUMP,
+			PLAYER_TWO_JUMP,
+			WALL_HIT,
+			GROUND_HIT,
+			BUTTON_PRESSED,
+			BUTTON_RELEASED,
 			SOUNDS_COUNT
 		};
+
+		enum Musics
+		{
+			MENU_MUSIC,
+			GAMEPLAY_MUSIC,
+			MUSICS_COUNT
+		};
+
 		void init();
 		void unload();
 		Texture2D getTexture(Textures asset);
+		Sound getSound(Sounds asset);
+		Music getMusic(Musics asset);
 	}
 }

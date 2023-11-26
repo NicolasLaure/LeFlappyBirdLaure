@@ -62,11 +62,13 @@ namespace LeFlappyBird
 			{
 				Timer::startTimer(&flyingTimer, FLYING_TIMER_LIFETIME);
 				bird.velocity.y = BIRD_VELOCITY_UP;
+				PlaySound(AssetManager::getSound(AssetManager::PLAYER_ONE_JUMP));
 			}
 			else if (!bird.isPlayerOne && IsMouseButtonPressed(bird.goUpMouseButton) && !isBirdInNonFlySpace(bird))
 			{
 				Timer::startTimer(&flyingTimer, FLYING_TIMER_LIFETIME);
 				bird.velocity.y = BIRD_VELOCITY_UP;
+				PlaySound(AssetManager::getSound(AssetManager::PLAYER_TWO_JUMP));
 			}
 
 			bird.velocity.y += BIRD_ACCELERATION * GetFrameTime();
@@ -141,8 +143,13 @@ namespace LeFlappyBird
 		bool isCollidingBottom(Bird bird)
 		{
 			ScreenUtils::Entity birdEntity = { bird.position, bird.velocity, { 0.0f, 0.0f } };
+			if (ScreenUtils::isCollidingInScreenPart(birdEntity, ScreenUtils::BOTTOM))
+			{
+				PlaySound(AssetManager::getSound(AssetManager::Sounds::GROUND_HIT));
+				return true;
+			}
 
-			return ScreenUtils::isCollidingInScreenPart(birdEntity, ScreenUtils::BOTTOM);
+			return false;
 		}
 	}
 }
