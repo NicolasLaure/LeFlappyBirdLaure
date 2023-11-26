@@ -4,12 +4,15 @@
 #include "utils/math.h"
 #include "assets/assetManager.h"
 
-namespace LeFlappyBird {
-	namespace Wall {
+namespace LeFlappyBird
+{
+	namespace Wall
+	{
 		static const float WALL_VELOCITY = 200.0f;
 		static const Vector2 SPACE_SIZE = { 50.0f, 200.0f };
 
-		static Rectangle getTopRectangle(Wall wall) {
+		static Rectangle getTopRectangle(Wall wall)
+		{
 			return {
 				wall.position.x,
 				0,
@@ -18,7 +21,8 @@ namespace LeFlappyBird {
 			};
 		}
 
-		static Rectangle getBottomRectangle(Wall wall) {
+		static Rectangle getBottomRectangle(Wall wall)
+		{
 			return {
 				wall.position.x,
 				wall.position.y + wall.size.y,
@@ -27,7 +31,8 @@ namespace LeFlappyBird {
 			};
 		}
 
-		Wall createWall(Vector2 position) {
+		Wall createWall(Vector2 position)
+		{
 			return {
 				position,
 				WALL_VELOCITY,
@@ -35,24 +40,27 @@ namespace LeFlappyBird {
 			};
 		}
 
-		void updateWall(Wall& wall) {
+		void updateWall(Wall& wall)
+		{
 			wall.position.x -= WALL_VELOCITY * GetFrameTime();
 		}
 
-		void drawWall(Wall wall) {
+		void drawWall(Wall wall)
+		{
 			/*DrawRectangleRec(getTopRectangle(wall), YELLOW);
 
 			DrawRectangleRec(getBottomRectangle(wall), YELLOW);*/
 			Texture upperPipe = AssetManager::getTexture(AssetManager::Textures::UPPER_PIPE);
-			Rectangle upperSource = { 0,0, static_cast<float>(upperPipe.width), static_cast<float>(upperPipe.width) };
-			DrawTexturePro(upperPipe, upperSource , getTopRectangle(wall), { 0,0 }, 0, WHITE);
+			Rectangle upperSource = { 0,0, static_cast<float>(upperPipe.width), static_cast<float>(upperPipe.height) };
+			DrawTexturePro(upperPipe, upperSource, getTopRectangle(wall), { 0,0 }, 0, WHITE);
 
 			Texture lowerPipe = AssetManager::getTexture(AssetManager::Textures::LOWER_PIPE);
-			Rectangle lowerSource = { 0,0, static_cast<float>(upperPipe.width), static_cast<float>(upperPipe.width) };
+			Rectangle lowerSource = { 0,0, static_cast<float>(lowerPipe.width), static_cast<float>(lowerPipe.height) };
 			DrawTexturePro(lowerPipe, lowerSource, getBottomRectangle(wall), { 0,0 }, 0, WHITE);
 		};
 
-		int createRandomYStartValue(int topMargin, int bottomMargin) {
+		int createRandomYStartValue(int topMargin, int bottomMargin)
+		{
 			const int SPACE_MARGIN = 10;
 			return GetRandomValue(
 				SPACE_MARGIN + topMargin,
@@ -60,11 +68,13 @@ namespace LeFlappyBird {
 			);
 		}
 
-		bool isDisappearing(Wall wall) {
+		bool isDisappearing(Wall wall)
+		{
 			return wall.position.x < -SPACE_SIZE.x;
 		}
 
-		bool collidesWith(Wall wall, Bird::Bird bird) {
+		bool collidesWith(Wall wall, Bird::Bird bird)
+		{
 			return MathUtils::checkRectangleCollision(
 				Bird::getRectangle(bird),
 				getTopRectangle(wall)
