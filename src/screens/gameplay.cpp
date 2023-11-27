@@ -34,7 +34,6 @@ namespace LeFlappyBird
 		static void initManagers()
 		{
 			BackgroundManager::initBackground();
-			UiManager::init();
 			WallsManager::init();
 		}
 
@@ -126,7 +125,6 @@ namespace LeFlappyBird
 			}
 
 			BackgroundManager::updateBackground(gameSpeedMultiplier);
-			UiManager::update();
 
 			UpdateMusicStream(AssetManager::getMusic(AssetManager::Musics::GAMEPLAY_MUSIC));
 		}

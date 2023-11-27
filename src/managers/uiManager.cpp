@@ -14,9 +14,6 @@ namespace LeFlappyBird
 		static const float SCORE_FONT_SIZE = 50.0f;
 		static const float SCORE_SPACING = 3.0f;
 
-		void init() {};
-		void update() {};
-
 		void draw(int score)
 		{
 			string scoreText = "Score:" + to_string(score);
