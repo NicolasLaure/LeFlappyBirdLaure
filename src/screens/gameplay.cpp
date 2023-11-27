@@ -43,7 +43,7 @@ namespace LeFlappyBird
 			{
 				gameplayEntities = {
 					Bird::createBird(BIRD_INIT_POSITION, true),
-					NULL,
+					0,
 				};
 			}
 			else
@@ -61,7 +61,7 @@ namespace LeFlappyBird
 			{
 				gameplayEntities = {
 					Bird::createBird(BIRD_INIT_POSITION, true),
-					NULL,
+					0,
 				};
 			}
 			else

@@ -101,7 +101,10 @@ namespace LeFlappyBird
 				break;
 			};
 
+#if defined(PLATFORM_WEB)
+#else
 			shouldClose = shouldClose || WindowShouldClose();
+#endif
 		};
 	}
 }

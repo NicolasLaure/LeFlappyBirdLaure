@@ -7,10 +7,16 @@
 #include "assets/fontManager.h"
 #include "constants/dimensions.h"
 
+#if defined(PLATFORM_WEB)
+#include <emscripten/emscripten.h>
+#endif
+
 namespace LeFlappyBird
 {
 	namespace Game
 	{
+		void UpdateDrawFrame();
+
 		static void close()
 		{
 			AssetManager::unload();
@@ -51,15 +57,24 @@ namespace LeFlappyBird
 			bool shouldClose = false;
 
 			SetExitKey(0);
-
+#if defined(PLATFORM_WEB)
+			emscripten_set_main_loop(UpdateDrawFrame, 0, 1);
+#else
 			while (!shouldClose)
 			{
 				update(shouldClose);
-
 				draw();
 			}
+#endif
 
 			close();
+		}
+
+		void UpdateDrawFrame()
+		{
+			bool shouldClose = false;
+			update(shouldClose);
+			draw();
 		}
 	}
 
