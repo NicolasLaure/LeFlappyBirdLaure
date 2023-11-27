@@ -56,20 +56,40 @@ namespace LeFlappyBird
 			};
 		};
 
-		void updateBird(Bird& bird)
+		void updateBird(Bird& bird, bool isMultiPlayer)
 		{
-			if (bird.isPlayerOne && IsKeyPressed(bird.goUpbutton) && !isBirdInNonFlySpace(bird))
+			bool isPlayerOneJumpPressed = IsKeyPressed(bird.goUpbutton) || IsMouseButtonPressed(bird.goUpMouseButton);
+			
+			if (!isMultiPlayer)
 			{
-				Timer::startTimer(&flyingTimer, FLYING_TIMER_LIFETIME);
-				bird.velocity.y = BIRD_VELOCITY_UP;
-				PlaySound(AssetManager::getSound(AssetManager::PLAYER_ONE_JUMP));
+				
+				if (bird.isPlayerOne && isPlayerOneJumpPressed && !isBirdInNonFlySpace(bird))
+				{
+					Timer::startTimer(&flyingTimer, FLYING_TIMER_LIFETIME);
+					bird.velocity.y = BIRD_VELOCITY_UP;
+					PlaySound(AssetManager::getSound(AssetManager::PLAYER_ONE_JUMP));
+				}
 			}
-			else if (!bird.isPlayerOne && IsMouseButtonPressed(bird.goUpMouseButton) && !isBirdInNonFlySpace(bird))
+			else
 			{
-				Timer::startTimer(&flyingTimer, FLYING_TIMER_LIFETIME);
-				bird.velocity.y = BIRD_VELOCITY_UP;
-				PlaySound(AssetManager::getSound(AssetManager::PLAYER_TWO_JUMP));
+				isPlayerOneJumpPressed = IsKeyPressed(bird.goUpbutton) || (GetTouchPosition(0).x < GetScreenWidth() / 2 && IsGestureDetected(GESTURE_TAP));
+
+				bool isPlayerTwoJumpPressed = (GetTouchPosition(0).x > GetScreenWidth() / 2 && IsGestureDetected(GESTURE_TAP));
+
+				if (bird.isPlayerOne && isPlayerOneJumpPressed && !isBirdInNonFlySpace(bird))
+				{
+					Timer::startTimer(&flyingTimer, FLYING_TIMER_LIFETIME);
+					bird.velocity.y = BIRD_VELOCITY_UP;
+					PlaySound(AssetManager::getSound(AssetManager::PLAYER_ONE_JUMP));
+				}
+				else if (!bird.isPlayerOne && isPlayerTwoJumpPressed && !isBirdInNonFlySpace(bird))
+				{
+					Timer::startTimer(&flyingTimer, FLYING_TIMER_LIFETIME);
+					bird.velocity.y = BIRD_VELOCITY_UP;
+					PlaySound(AssetManager::getSound(AssetManager::PLAYER_TWO_JUMP));
+				}
 			}
+
 
 			bird.velocity.y += BIRD_ACCELERATION * GetFrameTime();
 
@@ -120,7 +140,7 @@ namespace LeFlappyBird
 				MathUtils::clamp(getVelocityPercentage(bird.velocity.y) * 90.0f, -90.0f, 60.0f),
 				WHITE
 			);
-		};
+	};
 
 		Rectangle getRectangle(Bird bird)
 		{
@@ -151,5 +171,5 @@ namespace LeFlappyBird
 
 			return false;
 		}
-	}
+}
 }

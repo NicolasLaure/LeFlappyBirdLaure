@@ -73,16 +73,18 @@ namespace LeFlappyBird
 		{
 			Vector2 mousePosition = GetMousePosition();
 
+			Vector2 fingerPosition = GetTouchPosition(0);
 			bool isMouseCollisioningWithButton = MathUtils::checkPointToRectangleCollision(button.outsideRectangle, mousePosition);
 
-			bool isClicking = IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
-			bool isJustReleased = IsMouseButtonReleased(MOUSE_BUTTON_LEFT);
+			bool isFingerCollidingWithButton = MathUtils::checkPointToRectangleCollision(button.outsideRectangle, fingerPosition);
 
-
+			bool isClicking = IsMouseButtonPressed(MOUSE_BUTTON_LEFT) || IsGestureDetected(GESTURE_HOLD);
+			bool isJustReleased = IsMouseButtonReleased(MOUSE_BUTTON_LEFT) || isClicking == true && !GetGestureDetected();
+			
 
 			if (isMouseCollisioningWithButton && IsMouseButtonDown(MOUSE_BUTTON_LEFT) && !isClicking) return;
 
-			if (isMouseCollisioningWithButton)
+			if (isMouseCollisioningWithButton || isFingerCollidingWithButton)
 			{
 
 				if (isClicking && !IsSoundPlaying(AssetManager::getSound(AssetManager::Sounds::BUTTON_PRESSED)))

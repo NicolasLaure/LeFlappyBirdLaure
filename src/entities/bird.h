@@ -19,7 +19,7 @@ namespace LeFlappyBird
 		};
 
 		Bird createBird(Vector2 position, bool isPlayerOne);
-		void updateBird(Bird& bird);
+		void updateBird(Bird& bird, bool isMultiPlayer);
 		void drawBird(Bird bird);
 		Rectangle getRectangle(Bird bird);
 		MathUtils::Circle getBirdCircle(Bird bird);

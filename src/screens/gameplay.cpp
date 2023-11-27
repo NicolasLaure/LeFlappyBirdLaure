@@ -104,7 +104,7 @@ namespace LeFlappyBird
 			if (IsKeyPressed(KEY_ESCAPE) || IsMouseButtonPressed(MOUSE_BUTTON_MIDDLE))
 				isPaused = true;
 
-			Bird::updateBird(gameplayEntities.firstPlayerBird);
+			Bird::updateBird(gameplayEntities.firstPlayerBird, isMultiPlayer);
 			WallsManager::updateWalls(score, gameplayEntities.firstPlayerBird.position, isPaused, gameSpeedMultiplier);
 
 			if (Bird::isCollidingBottom(gameplayEntities.firstPlayerBird) || WallsManager::isCollidingWithWall(gameplayEntities.firstPlayerBird))
@@ -115,7 +115,7 @@ namespace LeFlappyBird
 
 			if (isMultiPlayer)
 			{
-				Bird::updateBird(gameplayEntities.secondPlayerBird);
+				Bird::updateBird(gameplayEntities.secondPlayerBird, isMultiPlayer);
 
 				if (Bird::isCollidingBottom(gameplayEntities.secondPlayerBird) || WallsManager::isCollidingWithWall(gameplayEntities.secondPlayerBird))
 				{
