@@ -1,9 +1,12 @@
 #pragma once
 #include "raylib.h"
 
-namespace LeFlappyBird {
-	namespace Buttons {
-		struct Button {
+namespace LeFlappyBird
+{
+	namespace Buttons
+	{
+		struct Button
+		{
 			Rectangle insideRectangle;
 			Rectangle outsideRectangle;
 			Color insideColor;
@@ -17,7 +20,7 @@ namespace LeFlappyBird {
 		void drawButton(Button button);
 		void drawCenteredTextInButton(Button button, const char* text);
 		void drawTextureInButton(Button button, Texture2D texture);
-		void updateButton(Button &button);
+		void updateButton(Button& button);
 		Button createButton(Rectangle rectangle);
 		Button createButtonWithColors(Rectangle rectangle, Color insideColor, Color outsideColor, Color focusColor);
 	}

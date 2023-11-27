@@ -2,8 +2,10 @@
 #pragma once
 #include "raylib.h"
 
-namespace LeFlappyBird {
-	namespace AssetManager {
+namespace LeFlappyBird
+{
+	namespace AssetManager
+	{
 		enum Textures
 		{
 			PARALLAX_BACKGROUND,

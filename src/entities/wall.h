@@ -12,7 +12,7 @@ namespace LeFlappyBird
 			Vector2 position;
 			float velocity;
 			Vector2 size;
-			bool wasPassed{false};
+			bool wasPassed{ false };
 		};
 
 		Wall createWall(Vector2 position);

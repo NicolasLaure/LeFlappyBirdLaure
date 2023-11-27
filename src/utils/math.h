@@ -1,9 +1,12 @@
 #pragma once
 #include "raylib.h"
 
-namespace LeFlappyBird {
-	namespace MathUtils {
-		struct Circle {
+namespace LeFlappyBird
+{
+	namespace MathUtils
+	{
+		struct Circle
+		{
 			Vector2 position;
 			float radius;
 		};

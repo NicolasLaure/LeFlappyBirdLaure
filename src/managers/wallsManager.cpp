@@ -6,8 +6,10 @@
 #include "utils/math.h"
 #include "assets/assetManager.h"
 
-namespace LeFlappyBird {
-	namespace WallsManager {
+namespace LeFlappyBird
+{
+	namespace WallsManager
+	{
 		static float wallSpawnTime = 2.0f;
 		static Vector2 lastWallPosition;
 
@@ -15,7 +17,8 @@ namespace LeFlappyBird {
 
 		std::vector<Wall::Wall> walls;
 
-		void init() {
+		void init()
+		{
 			wallSpawnTime = 2.0f;
 			Timer::startTimer(&wallSpawnTimer, wallSpawnTime);
 
@@ -27,16 +30,19 @@ namespace LeFlappyBird {
 			walls = { Wall::createWall(lastWallPosition) };
 		};
 
-		void updateWalls(int& score, Vector2 birdPosition, bool isPaused, float& speedMultiplier) {
+		void updateWalls(int& score, Vector2 birdPosition, bool isPaused, float& speedMultiplier)
+		{
 
 			if (isPaused)
 				Timer::pauseTimer(&wallSpawnTimer);
 			else if (!isPaused && Timer::isPaused(wallSpawnTimer))
 				Timer::unPauseTimer(&wallSpawnTimer);
 
-			if (Timer::timerDone(wallSpawnTimer)) {
+			if (Timer::timerDone(wallSpawnTimer))
+			{
 				Vector2 nextWallPosition;
-				if (lastWallPosition.y > MathUtils::getHalf(ScreenUtils::getScreenHeight())) {
+				if (lastWallPosition.y > MathUtils::getHalf(ScreenUtils::getScreenHeight()))
+				{
 					nextWallPosition = {
 						lastWallPosition.x,
 						static_cast<float>(
@@ -49,7 +55,8 @@ namespace LeFlappyBird {
 						)
 					};
 				}
-				else {
+				else
+				{
 					nextWallPosition = {
 						lastWallPosition.x,
 						static_cast<float>(
@@ -68,25 +75,33 @@ namespace LeFlappyBird {
 				Timer::startTimer(&wallSpawnTimer, wallSpawnTime);
 			}
 
-			for (size_t i = 0; i < walls.size(); i++) {
-				if (Wall::isDisappearing(walls[i])) {
+			for (size_t i = 0; i < walls.size(); i++)
+			{
+				if (Wall::isDisappearing(walls[i]))
+				{
 					walls.erase(walls.begin() + i);
 				}
-				else {
+				else
+				{
 					Wall::updateWall(walls[i], birdPosition, score, speedMultiplier, wallSpawnTime);
 				}
 			}
 		};
 
-		void draw() {
-			for (size_t i = 0; i < walls.size(); i++) {
+		void draw()
+		{
+			for (size_t i = 0; i < walls.size(); i++)
+			{
 				Wall::drawWall(walls[i]);
 			}
 		};
 
-		bool isCollidingWithWall(Bird::Bird bird) {
-			for (size_t i = 0; i < walls.size(); i++) {
-				if (Wall::collidesWith(walls[i], bird)) {
+		bool isCollidingWithWall(Bird::Bird bird)
+		{
+			for (size_t i = 0; i < walls.size(); i++)
+			{
+				if (Wall::collidesWith(walls[i], bird))
+				{
 					PlaySound(AssetManager::getSound(AssetManager::Sounds::WALL_HIT));
 					return true;
 				}

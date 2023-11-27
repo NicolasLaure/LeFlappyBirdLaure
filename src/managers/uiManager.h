@@ -1,6 +1,8 @@
 #pragma once
-namespace LeFlappyBird {
-	namespace UiManager {
+namespace LeFlappyBird
+{
+	namespace UiManager
+	{
 
 		void init();
 		void update();

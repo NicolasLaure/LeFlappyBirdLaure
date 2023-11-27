@@ -1,7 +1,9 @@
 #pragma once
 
-namespace LeFlappyBird {
-	namespace Game {
+namespace LeFlappyBird
+{
+	namespace Game
+	{
 		void startGame();
 	}
 }

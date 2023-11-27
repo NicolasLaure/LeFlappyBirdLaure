@@ -9,22 +9,26 @@
 #include "managers/screenManager.h"
 #include "utils/math.h"
 
-namespace LeFlappyBird {
-	namespace Credits {
+namespace LeFlappyBird
+{
+	namespace Credits
+	{
 		static const float SCREEN_MARGIN = 50.0f;
 		static const int BUTTON_WIDTH = 200;
 		static const int BUTTON_HEIGHT = 50;
 
 		static Buttons::Button goBackButton;
 
-		void drawCredits() {
+		void drawCredits()
+		{
 			DrawTextureEx(AssetManager::getTexture(AssetManager::CREDITS), { 0.0f, 0.0f }, 0, 1, WHITE);
 
 			Buttons::drawButton(goBackButton);
 			Buttons::drawCenteredTextInButton(goBackButton, "GO BACK");
 		};
 
-		void initCredits() {
+		void initCredits()
+		{
 			goBackButton = Buttons::createButton(
 				{
 					SCREEN_MARGIN,
@@ -34,12 +38,14 @@ namespace LeFlappyBird {
 				}
 			);
 		};
-		
-		void checkCreditsInputAndCollision() {
+
+		void checkCreditsInputAndCollision()
+		{
 			Buttons::updateButton(goBackButton);
 			Vector2 mousePosition = GetMousePosition();
 
-			if (goBackButton.isClicked) {
+			if (goBackButton.isClicked)
+			{
 				ScreensManager::changeScreenTo(ScreensManager::MENU);
 			}
 		};

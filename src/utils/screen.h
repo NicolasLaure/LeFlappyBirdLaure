@@ -1,15 +1,19 @@
 #pragma once
 #include "raylib.h"
 
-namespace LeFlappyBird {
-	namespace ScreenUtils {
-		struct Entity {
+namespace LeFlappyBird
+{
+	namespace ScreenUtils
+	{
+		struct Entity
+		{
 			Vector2 position;
 			Vector2 velocity;
 			Vector2 size;
 		};
 
-		enum ScreenPart {
+		enum ScreenPart
+		{
 			TOP = 0,
 			BOTTOM
 		};

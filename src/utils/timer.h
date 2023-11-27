@@ -1,8 +1,11 @@
 #pragma once
 
-namespace LeFlappyBird {
-	namespace Timer {
-		struct Timer {
+namespace LeFlappyBird
+{
+	namespace Timer
+	{
+		struct Timer
+		{
 			double startTime;
 			double lifeTime;
 			double pauseTime;

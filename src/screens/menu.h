@@ -5,9 +5,12 @@
 
 #include "uiComponents/button.h"
 
-namespace LeFlappyBird {
-	namespace Menu {
-		enum Option {
+namespace LeFlappyBird
+{
+	namespace Menu
+	{
+		enum Option
+		{
 			SINGLEPLAYER,
 			MULTIPLAYER,
 			READ_RULES,
@@ -16,7 +19,8 @@ namespace LeFlappyBird {
 			OPTIONS_QUANTITY
 		};
 
-		struct MenuOption {
+		struct MenuOption
+		{
 			Option option;
 			std::string text;
 			Buttons::Button optionButton;

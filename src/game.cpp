@@ -7,16 +7,20 @@
 #include "assets/fontManager.h"
 #include "constants/dimensions.h"
 
-namespace LeFlappyBird {
-	namespace Game {
-		static void close() {
+namespace LeFlappyBird
+{
+	namespace Game
+	{
+		static void close()
+		{
 			AssetManager::unload();
 			FontManager::unload();
 			CloseAudioDevice();
 			CloseWindow();
 		}
 
-		static void init() {
+		static void init()
+		{
 			InitWindow(static_cast<int>(Dimensions::SCREEN_DIMENSIONS.x), static_cast<int>(Dimensions::SCREEN_DIMENSIONS.y), "LeFlappyBird");
 			InitAudioDevice();
 
@@ -25,11 +29,13 @@ namespace LeFlappyBird {
 			FontManager::init();
 		}
 
-		static void update(bool& shouldClose) {
+		static void update(bool& shouldClose)
+		{
 			ScreensManager::updateScreen(shouldClose);
 		}
 
-		static void draw() {
+		static void draw()
+		{
 			BeginDrawing();
 			GetFontDefault();
 			ClearBackground(BLACK);
@@ -39,7 +45,8 @@ namespace LeFlappyBird {
 			EndDrawing();
 		}
 
-		void startGame() {
+		void startGame()
+		{
 			init();
 			bool shouldClose = false;
 

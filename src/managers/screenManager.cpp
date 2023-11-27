@@ -8,14 +8,17 @@
 #include "screens/rules.h"
 #include "managers/pauseManager.h"
 
-namespace LeFlappyBird {
-	namespace ScreensManager {
+namespace LeFlappyBird
+{
+	namespace ScreensManager
+	{
 		static Screens actualScreen;
 
 		static bool isPaused = false;
 		static bool isGameOver = false;
 		static int score = 0;
-		void initManager() {
+		void initManager()
+		{
 			actualScreen = Screens::MENU;
 
 			Menu::initMenu();
@@ -23,10 +26,12 @@ namespace LeFlappyBird {
 			Pause::init();
 		}
 
-		void changeScreenTo(Screens screen) {
+		void changeScreenTo(Screens screen)
+		{
 			actualScreen = screen;
 
-			switch (actualScreen) {
+			switch (actualScreen)
+			{
 			case Screens::MENU:
 				Menu::initMenu();
 				break;
@@ -47,8 +52,10 @@ namespace LeFlappyBird {
 			}
 		}
 
-		void drawScreen() {
-			switch (actualScreen) {
+		void drawScreen()
+		{
+			switch (actualScreen)
+			{
 			case Screens::MENU:
 				Menu::drawMenu();
 				break;
@@ -70,8 +77,10 @@ namespace LeFlappyBird {
 			};
 		}
 
-		void updateScreen(bool& shouldClose) {
-			switch (actualScreen) {
+		void updateScreen(bool& shouldClose)
+		{
+			switch (actualScreen)
+			{
 			case Screens::MENU:
 				Menu::update(shouldClose);
 				break;

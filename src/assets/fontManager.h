@@ -1,8 +1,10 @@
 #pragma once
 #include "raylib.h"
 
-namespace LeFlappyBird {
-	namespace FontManager {
+namespace LeFlappyBird
+{
+	namespace FontManager
+	{
 		void init();
 		void unload();
 
