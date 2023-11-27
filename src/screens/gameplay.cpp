@@ -16,11 +16,7 @@ namespace LeFlappyBird
 		struct GameplayEntities
 		{
 			Bird::Bird firstPlayerBird;
-			Bird::Bird secondPlayerBird;
-
 		};
-
-		static bool isMultiPlayer = false;
 
 		static	Vector2 BIRD_INIT_POSITION;
 
@@ -39,38 +35,16 @@ namespace LeFlappyBird
 
 		static void initEntities()
 		{
-			if (!isMultiPlayer)
-			{
-				gameplayEntities = {
-					Bird::createBird(BIRD_INIT_POSITION, true),
-					NULL,
-				};
-			}
-			else
-			{
-				gameplayEntities = {
-					Bird::createBird(BIRD_INIT_POSITION, true),
-					Bird::createBird(BIRD_INIT_POSITION, false),
-				};
-			}
+			gameplayEntities = {
+				Bird::createBird(BIRD_INIT_POSITION, true),
+			};
 		}
 
 		static void restartEntities(int& score)
 		{
-			if (!isMultiPlayer)
-			{
-				gameplayEntities = {
-					Bird::createBird(BIRD_INIT_POSITION, true),
-					NULL,
-				};
-			}
-			else
-			{
-				gameplayEntities = {
-					Bird::createBird(BIRD_INIT_POSITION, true),
-					Bird::createBird(BIRD_INIT_POSITION, false),
-				};
-			}
+			gameplayEntities = {
+				Bird::createBird(BIRD_INIT_POSITION, true),
+			};
 
 			WallsManager::init();
 
@@ -84,7 +58,6 @@ namespace LeFlappyBird
 				ScreenUtils::getScreenWidth() / 8,
 				MathUtils::getHalf(ScreenUtils::getScreenHeight())
 			};
-			Gameplay::isMultiPlayer = isMultiplayer;
 			initEntities();
 			initManagers();
 
@@ -113,17 +86,6 @@ namespace LeFlappyBird
 				//restartEntities();
 			};
 
-			if (isMultiPlayer)
-			{
-				Bird::updateBird(gameplayEntities.secondPlayerBird);
-
-				if (Bird::isCollidingBottom(gameplayEntities.secondPlayerBird) || WallsManager::isCollidingWithWall(gameplayEntities.secondPlayerBird))
-				{
-					gameOver(isPaused, isGameOver);
-					//restartEntities();
-				};
-			}
-
 			BackgroundManager::updateBackground(gameSpeedMultiplier);
 
 			UpdateMusicStream(AssetManager::getMusic(AssetManager::Musics::GAMEPLAY_MUSIC));
@@ -133,8 +95,6 @@ namespace LeFlappyBird
 		{
 			BackgroundManager::drawBackground();
 			Bird::drawBird(gameplayEntities.firstPlayerBird);
-			if (isMultiPlayer)
-				Bird::drawBird(gameplayEntities.secondPlayerBird);
 			WallsManager::draw();
 			UiManager::draw(score);
 		}

@@ -64,12 +64,6 @@ namespace LeFlappyBird
 				bird.velocity.y = BIRD_VELOCITY_UP;
 				PlaySound(AssetManager::getSound(AssetManager::PLAYER_ONE_JUMP));
 			}
-			else if (!bird.isPlayerOne && IsMouseButtonPressed(bird.goUpMouseButton) && !isBirdInNonFlySpace(bird))
-			{
-				Timer::startTimer(&flyingTimer, FLYING_TIMER_LIFETIME);
-				bird.velocity.y = BIRD_VELOCITY_UP;
-				PlaySound(AssetManager::getSound(AssetManager::PLAYER_TWO_JUMP));
-			}
 
 			bird.velocity.y += BIRD_ACCELERATION * GetFrameTime();
 

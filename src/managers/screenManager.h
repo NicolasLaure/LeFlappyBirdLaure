@@ -7,7 +7,6 @@ namespace LeFlappyBird
 		enum Screens
 		{
 			GAMEPLAY = 0,
-			MULTIPLAYER_GAMEPLAY,
 			MENU,
 			RULES,
 			YOU_LOST,
