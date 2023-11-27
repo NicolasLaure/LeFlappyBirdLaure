@@ -18,7 +18,7 @@ namespace LeFlappyBird
 		static const int BUTTON_HEIGHT = 50;
 
 		static const int CHANGE_PAGE_BUTTON_SIZE = 70;
-		bool isFirstPage = true;
+		int actualPage = 0;
 
 		static Buttons::Button goBackButton;
 		static Buttons::Button changePageButton;
@@ -26,7 +26,7 @@ namespace LeFlappyBird
 		{
 			goBackButton = Buttons::createButton({ SCREEN_MARGIN, static_cast<float>(GetScreenHeight() - BUTTON_HEIGHT - SCREEN_MARGIN), BUTTON_WIDTH, BUTTON_HEIGHT });
 			changePageButton = Buttons::createButton({ static_cast<float>(GetScreenWidth() - CHANGE_PAGE_BUTTON_SIZE - SCREEN_MARGIN) ,static_cast<float>(GetScreenHeight() - CHANGE_PAGE_BUTTON_SIZE - SCREEN_MARGIN) , CHANGE_PAGE_BUTTON_SIZE ,CHANGE_PAGE_BUTTON_SIZE });
-			isFirstPage = true;
+			actualPage = 0;
 		}
 
 		void checkCreditsInputAndCollision()
@@ -41,10 +41,24 @@ namespace LeFlappyBird
 
 			if (changePageButton.isClicked)
 			{
-				if (isFirstPage)
-					isFirstPage = false;
+#if defined(PLATFORM_WEB)
+				if (actualPage == 0)
+				{
+					actualPage = 1;
+				}
+				else if (actualPage == 1)
+					actualPage = 2;
 				else
-					isFirstPage = true;
+					actualPage = 0;
+#else
+				if (actualPage == 0)
+				{
+					actualPage = 1;
+				}
+				else
+					actualPage = 0;
+#endif
+
 			}
 		}
 
@@ -52,10 +66,12 @@ namespace LeFlappyBird
 		{
 			Texture changePageTexture = AssetManager::getTexture(AssetManager::RULES_CHANGE_PAGE);
 
-			if (isFirstPage)
+			if (actualPage == 0)
 				DrawTextureEx(AssetManager::getTexture(AssetManager::RULES_PAGE_ONE), { 0.0f, 0.0f }, 0, 1, WHITE);
-			else
+			else if(actualPage == 1)
 				DrawTextureEx(AssetManager::getTexture(AssetManager::RULES_PAGE_TWO), { 0.0f, 0.0f }, 0, 1, WHITE);
+			else
+				DrawTextureEx(AssetManager::getTexture(AssetManager::RULES_PAGE_THREE), { 0.0f, 0.0f }, 0, 1, WHITE);
 
 			Buttons::drawTextureInButton(changePageButton, changePageTexture);
 

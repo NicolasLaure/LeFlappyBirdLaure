@@ -40,7 +40,12 @@ namespace LeFlappyBird
 			AssetWithTexture credits = { Textures::CREDITS, LoadTexture("res/images/credits.png") };
 			AssetWithTexture rulesPageChange = { Textures::RULES_CHANGE_PAGE, LoadTexture("res/images/changePageButton.png") };
 			AssetWithTexture rulesPageOne = { Textures::RULES_PAGE_ONE, LoadTexture("res/images/rulesPage1.png") };
+#if defined(PLATFORM_WEB)
+			AssetWithTexture rulesPageTwo = { Textures::RULES_PAGE_TWO, LoadTexture("res/images/rulesPage2Web.png") };
+#else
 			AssetWithTexture rulesPageTwo = { Textures::RULES_PAGE_TWO, LoadTexture("res/images/rulesPage2.png") };
+#endif
+			AssetWithTexture rulesPageThree = { Textures::RULES_PAGE_THREE, LoadTexture("res/images/rulesPage3Web.png") };
 			AssetWithTexture pausePanel = { Textures::PAUSE_PANEL, LoadTexture("res/images/pausePanel.png") };
 			AssetWithTexture gameOverPanel = { Textures::GAME_OVER_PANEL, LoadTexture("res/images/gameOverPanel.png") };
 			AssetWithTexture continueButton = { Textures::CONTINUE_BUTTON, LoadTexture("res/images/continueButton.png") };
@@ -60,6 +65,7 @@ namespace LeFlappyBird
 				rulesPageChange,
 				rulesPageOne,
 				rulesPageTwo,
+				rulesPageThree,
 				pausePanel,
 				gameOverPanel,
 				continueButton,
