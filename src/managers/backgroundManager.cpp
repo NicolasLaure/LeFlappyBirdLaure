@@ -11,7 +11,7 @@ namespace LeFlappyBird
 	{
 		struct BackgroundAsset
 		{
-			Texture2D backgroundTexture;
+			Texture backgroundTexture;
 			float parallaxVelocity;
 			float scroll;
 			float scale;
@@ -30,7 +30,7 @@ namespace LeFlappyBird
 		{
 			backgroundAsset.scroll += backgroundAsset.parallaxVelocity * speedMultiplier * GetFrameTime();
 
-			if (backgroundAsset.scroll >= backgroundAsset.backgroundTexture.width * 2.0f)
+			if (backgroundAsset.scroll >= backgroundAsset.backgroundTexture.width)
 			{
 				backgroundAsset.scroll = 0.0f;
 			}
@@ -41,7 +41,7 @@ namespace LeFlappyBird
 			Rectangle source = {
 				backgroundAsset.scroll,
 				0.0f,
-				static_cast<float>(backgroundAsset.backgroundTexture.width * backgroundAsset.scale),
+				static_cast<float>(backgroundAsset.backgroundTexture.width),
 				static_cast<float>(backgroundAsset.backgroundTexture.height)
 			};
 
