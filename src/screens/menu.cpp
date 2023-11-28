@@ -115,7 +115,7 @@ namespace LeFlappyBird
 				Buttons::drawCenteredTextInButton(menuOptions[i].optionButton, menuOptions[i].text.c_str());
 			}
 
-			FontManager::drawText("1.0", { 10, 0 }, TITLE_FONT_SIZE, TITLE_SPACING, WHITE);
+			FontManager::drawText("1.1", { 10, 0 }, TITLE_FONT_SIZE, TITLE_SPACING, WHITE);
 		}
 
 		void checkMenuInputAndCollision(bool& shouldClose)
