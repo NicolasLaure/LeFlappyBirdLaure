@@ -13,10 +13,10 @@ namespace LeFlappyBird
 		static const float OPTION_RECTANGLE_WIDTH = 300.0f;
 		static const float OPTION_RECTANGLE_HEIGHT = 40.0f;
 
-		static const float TOP_MARGIN = 120.0f;
+		static const float TOP_MARGIN = 360.0f;
 		static const float OPTION_RECTANGLE_MARGIN = 25.0f;
-		static const float TITLE_TOP_MARGIN = 40.0f;
-		static const float TITLE_FONT_SIZE = 50.0f;
+		static const float TITLE_TOP_MARGIN = 20.0f;
+		static const float TITLE_FONT_SIZE = 80.0f;
 		static const float TITLE_SPACING = 3.0f;
 
 		static MenuOption menuOptions[Option::OPTIONS_QUANTITY];
@@ -97,13 +97,17 @@ namespace LeFlappyBird
 		}
 		void drawMenu()
 		{
+			Texture backGround = AssetManager::getTexture(AssetManager::PARALLAX_BACKGROUND);
+			Rectangle source = { 0,0, static_cast<float>(backGround.width), static_cast<float>(backGround.height) };
+			DrawTexturePro(backGround, source, { 0,0, ScreenUtils::getScreenWidth(), ScreenUtils::getScreenHeight() }, { 0,0 }, 0, WHITE);
+
 			const char* title = "LeFlappyBird";
 			Vector2 titleSize = FontManager::measureText(title, TITLE_FONT_SIZE, TITLE_SPACING);
 			float screenWidth = ScreenUtils::getScreenWidth();
 			float asteroidsTitlePosX = MathUtils::getHalf(screenWidth) - MathUtils::getHalf(titleSize.x);
 
 			FontManager::drawText(
-				title, { asteroidsTitlePosX, TITLE_TOP_MARGIN }, TITLE_FONT_SIZE, TITLE_SPACING, WHITE);
+				title, { asteroidsTitlePosX, TITLE_TOP_MARGIN }, TITLE_FONT_SIZE, TITLE_SPACING, BLACK);
 
 			for (int i = 0; i < Option::OPTIONS_QUANTITY; i++)
 			{
