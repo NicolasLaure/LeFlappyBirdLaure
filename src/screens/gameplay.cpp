@@ -75,6 +75,7 @@ namespace LeFlappyBird
 			WallsManager::init();
 
 			gameSpeedMultiplier = 1;
+			BackgroundManager::initBackground();
 			score = 0;
 		}
 
@@ -87,6 +88,7 @@ namespace LeFlappyBird
 			Gameplay::isMultiPlayer = isMultiplayer;
 			initEntities();
 			initManagers();
+			BackgroundManager::initBackground();
 
 			PlayMusicStream(AssetManager::getMusic(AssetManager::Musics::GAMEPLAY_MUSIC));
 
