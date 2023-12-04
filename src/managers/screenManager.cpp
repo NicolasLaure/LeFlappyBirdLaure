@@ -37,9 +37,11 @@ namespace LeFlappyBird
 				break;
 			case Screens::GAMEPLAY:
 				Gameplay::initGameplay(false);
+				score = 0;
 				break;
 			case Screens::MULTIPLAYER_GAMEPLAY:
 				Gameplay::initGameplay(true);
+				score = 0;
 				break;
 			case Screens::YOU_LOST:
 				break;
